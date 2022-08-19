@@ -141,8 +141,7 @@ class CoreDataManager: CoreDataManagerInterface {
   
   func delete(id: UUID) -> [Person]? {
     /*get reference to appdelegate file*/
-    
-    
+      
     /*get reference of managed object context*/
     let managedContext = persistentContainer.viewContext
     
