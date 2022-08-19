@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */; };
 		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
 		D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */; };
 		D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewTransactionViewModel.swift; path = Matey/AddNewTransactionViewModel.swift; sourceTree = SOURCE_ROOT; };
 		D666CD0C28A96682002B4E73 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6C4FEA428A7A7B500CDFDAC /* Matey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 		D6C4FEC228A7A85200CDFDAC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */,
 				D6C4FEBF28A7A82200CDFDAC /* MainTabBarViewController.swift in Sources */,
 				D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */,
 				D6C4FEB228A7A7B500CDFDAC /* Matey.xcdatamodeld in Sources */,
