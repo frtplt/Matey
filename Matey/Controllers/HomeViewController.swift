@@ -24,6 +24,8 @@ final class HomeViewController: UIViewController {
 
   // MARK: - Properties
 
+  let coreDataManager = CoreDataManager()
+
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
@@ -89,7 +91,7 @@ final class HomeViewController: UIViewController {
   @objc private func plusButtonAction(sender: UIButton) {
       print("Tapped")
       let storyboard = UIStoryboard(name: "History", bundle: nil)
-      let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController") as! HistoryViewController
+      guard let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController") as? HistoryViewController else { return }
       self.navigationController?.pushViewController(viewController, animated: true)
       }
 }
