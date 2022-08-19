@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
+		D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */; };
 		D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */; };
 		D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */; };
 		D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C4FEAD28A7A7B500CDFDAC /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D666CD0C28A96682002B4E73 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6C4FEA428A7A7B500CDFDAC /* Matey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +83,9 @@
 				D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */,
 				D6C4FEB328A7A7B700CDFDAC /* Assets.xcassets */,
 				D6C4FEB828A7A7B700CDFDAC /* Info.plist */,
+				D666CD0C28A96682002B4E73 /* CoreDataManager.swift */,
 				D6C4FEB028A7A7B500CDFDAC /* Matey.xcdatamodeld */,
+				D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */,
 			);
 			path = Matey;
 			sourceTree = "<group>";
@@ -138,6 +144,7 @@
 				D6C4FEA028A7A7B500CDFDAC /* Sources */,
 				D6C4FEA128A7A7B500CDFDAC /* Frameworks */,
 				D6C4FEA228A7A7B500CDFDAC /* Resources */,
+				D6FD2F6C28A927D30067BEB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -189,6 +196,7 @@
 				D6C4FEB728A7A7B700CDFDAC /* LaunchScreen.storyboard in Resources */,
 				D6C4FEB428A7A7B700CDFDAC /* Assets.xcassets in Resources */,
 				D6C4FEC828A7A96600CDFDAC /* Profile.storyboard in Resources */,
+				D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */,
 				D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */,
 				D6C4FEC628A7A95900CDFDAC /* Home.storyboard in Resources */,
 				D6C4FECA28A7A96E00CDFDAC /* History.storyboard in Resources */,
@@ -196,6 +204,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D6FD2F6C28A927D30067BEB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6C4FEA028A7A7B500CDFDAC /* Sources */ = {
@@ -208,6 +237,7 @@
 				D6C4FECE28A7ACEE00CDFDAC /* HomeViewController.swift in Sources */,
 				D6C4FED228A7AD1000CDFDAC /* HistoryViewController.swift in Sources */,
 				D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */,
+				D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */,
 				D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
