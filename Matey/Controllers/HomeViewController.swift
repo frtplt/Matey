@@ -8,71 +8,78 @@
 import Foundation
 import UIKit
 
+protocol HomeViewControllerInterface: AnyObject {
+    func uiInit()
+    func setupPlusButton()
+}
+
 final class HomeViewController: UIViewController {
 
     // MARK: - UI Elements
-    @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelWelcome: UILabel!
-    @IBOutlet weak var labelTotalBalance: UILabel!
-    @IBOutlet weak var labelTotalBalanceAmount: UILabel!
-    @IBOutlet weak var labelLend: UILabel!
-    @IBOutlet weak var labelLendAmount: UILabel!
-    @IBOutlet weak var labelBorrow: UILabel!
-    @IBOutlet weak var labelBorrowAmount: UILabel!
-    @IBOutlet weak var labelHeader: UILabel!
-    var plusButton: UIButton!
+    @IBOutlet weak private var labelName: UILabel!
+    @IBOutlet weak private var labelWelcome: UILabel!
+    @IBOutlet weak private var labelTotalBalance: UILabel!
+    @IBOutlet weak private var labelTotalBalanceAmount: UILabel!
+    @IBOutlet weak private var labelLend: UILabel!
+    @IBOutlet weak private var labelLendAmount: UILabel!
+    @IBOutlet weak private var labelBorrow: UILabel!
+    @IBOutlet weak private var labelBorrowAmount: UILabel!
+    @IBOutlet weak private var labelHeader: UILabel!
+    private var plusButton: UIButton!
 
     // MARK: - Properties
 
-    let viewModel:HomeViewModelInterface
-
-    init(viewModel:HomeViewModelInterface) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var viewModel: HomeViewModelInterface?
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        uiInit()
-        setupPlusButton()
+        viewModel = HomeViewModel(view: HomeViewController())
+        viewModel?.notifyViewDidload()
     }
 
     // MARK: - Functions
 
-    private func uiInit() {
-        title = "Home"
-        labelName.text = "Hi Fırat"
-        labelName.font = UIFont.boldSystemFont(ofSize: 32)
-        labelWelcome.text = "welcome back"
-        labelWelcome.font = UIFont.systemFont(ofSize: 24)
+}
+
+    // MARK: - Interface Setup
+
+extension HomeViewController: HomeViewControllerInterface {
+
+    func uiInit() {
+        title = ConstantsHomeVC.title
+        labelName.text = ConstantsHomeVC.labelNameText
+        labelName.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelNameFontSize)
+
+        labelWelcome.text = ConstantsHomeVC.labelWelcomeText
+        labelWelcome.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelWelcomeFontSize)
         labelWelcome.textColor = .secondaryLabel
-        labelTotalBalance.text = "Total Balance"
-        labelTotalBalance.font = UIFont.systemFont(ofSize: 16)
+
+        labelTotalBalance.text = ConstantsHomeVC.labelTotalBalanceText
+        labelTotalBalance.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelTotalBalanceFontSize)
         labelTotalBalance.textColor = .secondaryLabel
-        labelTotalBalanceAmount.text = "8,400 ₺"
-        labelTotalBalanceAmount.font = UIFont.boldSystemFont(ofSize: 24)
-        labelLend.text = "Lend"
-        labelLend.font = UIFont.systemFont(ofSize: 16)
+        labelTotalBalanceAmount.text = ConstantsHomeVC.labelTotalBalanceAmountText
+        labelTotalBalanceAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelTotalBalanceAmountFont)
+
+        labelLend.text = ConstantsHomeVC.labelLendText
+        labelLend.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelLendFontSize)
         labelLend.textColor = .secondaryLabel
-        labelLendAmount.text = "10,000 ₺"
-        labelLendAmount.font = UIFont.boldSystemFont(ofSize: 24)
-        labelLendAmount.textColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
-        labelBorrow.text = "Borrow"
-        labelBorrow.font = UIFont.systemFont(ofSize: 16)
+        labelLendAmount.text = ConstantsHomeVC.labelLendAmountText
+        labelLendAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelLendAmountFontSize)
+        labelLendAmount.textColor = ConstantsHomeVC.labelLendAmountTextColor
+
+        labelBorrow.text = ConstantsHomeVC.labelBorrowText
+        labelBorrow.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelBorrowFontSize)
         labelBorrow.textColor = .secondaryLabel
-        labelBorrowAmount.text = "1,600 ₺"
-        labelBorrowAmount.font = UIFont.boldSystemFont(ofSize: 24)
-        labelBorrowAmount.textColor = .red
-        labelHeader.text = "Where is my Money?"
-        labelHeader.font = UIFont.boldSystemFont(ofSize: 24)
-        labelHeader.textColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+        labelBorrowAmount.text = ConstantsHomeVC.labelBorrowAmountText
+        labelBorrowAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelBorrowAmountFontSize)
+        labelBorrowAmount.textColor = ConstantsHomeVC.labelBorrowAmountTextColor
+
+        labelHeader.text = ConstantsHomeVC.labelHeaderText
+        labelHeader.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelHeaderFontSize)
+        labelHeader.textColor = ConstantsHomeVC.labelHeaderTextColor
     }
 
     func setupPlusButton() {
@@ -99,8 +106,7 @@ final class HomeViewController: UIViewController {
 
     @objc private func plusButtonAction(sender: UIButton) {
         print("Tapped")
-        let storyboard = UIStoryboard(name: "History", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController") as? HistoryViewController else { return }
+        guard let viewController = self.storyboard?.instantiateViewController(ofType: HistoryViewController.self) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

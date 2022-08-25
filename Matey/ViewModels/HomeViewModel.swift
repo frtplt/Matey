@@ -8,17 +8,27 @@
 import Foundation
 
 protocol HomeViewModelInterface: AnyObject {
-    var allPerson: [Person]? { get set }
-    var coreDataManager: CoreDataManager { get set }
+    var allPerson: [Person]? { get }
+    func notifyViewDidload()
     func getAllData() -> [Person]?
 }
 
-class HomeViewModel: HomeViewModelInterface {
-    var allPerson: [Person]?
-    var coreDataManager: CoreDataManager
+final class HomeViewModel {
 
-    init(coreDataManager: CoreDataManager) {
-        self.coreDataManager = coreDataManager
+    private weak var view: HomeViewControllerInterface?
+    var allPerson: [Person]?
+    var coreDataManager = CoreDataManager()
+
+    init(view: HomeViewControllerInterface?) {
+        self.view = view
+    }
+}
+
+extension HomeViewModel: HomeViewModelInterface {
+
+    func notifyViewDidload() {
+        view?.uiInit()
+        view?.setupPlusButton()
     }
 
     func getAllData() -> [Person]? {

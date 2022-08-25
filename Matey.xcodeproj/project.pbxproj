@@ -10,6 +10,8 @@
 		D62FF67928B048B80050B51A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67828B048B80050B51A /* HomeViewModel.swift */; };
 		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
 		D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */; };
+		D6B4409128B62145004B0F0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409028B62145004B0F0D /* Constants.swift */; };
+		D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */; };
 		D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */; };
 		D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */; };
 		D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C4FEAD28A7A7B500CDFDAC /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		D62FF67828B048B80050B51A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D666CD0C28A96682002B4E73 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D6B4409028B62145004B0F0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Ext .swift"; sourceTree = "<group>"; };
 		D6C4FEA428A7A7B500CDFDAC /* Matey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6B4409228B62979004B0F0D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D6C4FE9B28A7A7B500CDFDAC = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +92,7 @@
 				D6C4FEC028A7A82D00CDFDAC /* Controllers */,
 				D6C4FEC328A7A86800CDFDAC /* Storyboards */,
 				D6C4FEC428A7A88600CDFDAC /* Views */,
+				D6B4409228B62979004B0F0D /* Extensions */,
 				D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */,
 				D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */,
 				D6C4FEB328A7A7B700CDFDAC /* Assets.xcassets */,
@@ -87,6 +100,7 @@
 				D666CD0C28A96682002B4E73 /* CoreDataManager.swift */,
 				D6C4FEB028A7A7B500CDFDAC /* Matey.xcdatamodeld */,
 				D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */,
+				D6B4409028B62145004B0F0D /* Constants.swift */,
 			);
 			path = Matey;
 			sourceTree = "<group>";
@@ -231,9 +245,11 @@
 				D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */,
 				D6C4FEB228A7A7B500CDFDAC /* Matey.xcdatamodeld in Sources */,
 				D6C4FECE28A7ACEE00CDFDAC /* HomeViewController.swift in Sources */,
+				D6B4409128B62145004B0F0D /* Constants.swift in Sources */,
 				D6C4FED228A7AD1000CDFDAC /* HistoryViewController.swift in Sources */,
 				D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */,
 				D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */,
+				D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */,
 				D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
