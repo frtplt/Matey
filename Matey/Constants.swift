@@ -23,7 +23,6 @@ struct ConstantsHomeVC {
     static let labelTotalBalanceAmountText = "8,400 ₺"
     static let labelTotalBalanceAmountFont = 24.0
 
-
     static let labelLendText = "Lend"
     static let labelLendFontSize = 16.0
 
