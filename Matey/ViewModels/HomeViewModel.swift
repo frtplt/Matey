@@ -17,7 +17,7 @@ final class HomeViewModel {
 
     private weak var view: HomeViewControllerInterface?
     var currentUserData: [Person]?
-    var coreDataManager = CoreDataManager()
+    private var coreDataManager = CoreDataManager()
 
     init(view: HomeViewControllerInterface?) {
         self.view = view
