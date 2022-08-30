@@ -16,7 +16,7 @@ protocol HomeViewModelInterface: AnyObject {
 final class HomeViewModel {
 
     private weak var view: HomeViewControllerInterface?
-    var currentUserData: [Person]?
+   private var currentUserData: [Person]?
     private var coreDataManager = CoreDataManager()
 
     init(view: HomeViewControllerInterface?) {
