@@ -8,20 +8,15 @@
 import Foundation
 
 protocol AddNewTransactionInterface: AnyObject {
-    var coreDataManager: CoreDataManager { get set }
-    func saveTransaction(name: String, friend: String, lend: String, borrow: String, id: UUID)
+    func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String)
 }
 
 class AddNewTransactionViewModel: AddNewTransactionInterface {
 
-    var coreDataManager: CoreDataManager
+    var coreDataManager = CoreDataManager()
 
-    init(coreDataManager: CoreDataManager) {
-        self.coreDataManager = coreDataManager
-    }
-
-    func saveTransaction(name: String, friend: String, lend: String, borrow: String, id: UUID) {
-        coreDataManager.insertPerson(name: name, friend: friend, lend: lend, borrow: borrow, id: id)
+    func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String) {
+        coreDataManager.insertPerson(name: name, friend: friend, lend: lend, borrow: borrow, username: username)
     }
 }
 
