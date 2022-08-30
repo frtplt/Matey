@@ -68,14 +68,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - c14666eef7fb8332"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - 29c127477b3c6172"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.viewModel.getter : Swift.Optional&lt;Matey.HomeViewModelInterface&gt;"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -83,14 +83,14 @@
                   offsetFromSymbolStart = "103">
                </Location>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - e7eb26f22d85f32e"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - f6c675ba142116e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.viewModel.setter : Swift.Optional&lt;Matey.HomeViewModelInterface&gt;"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -98,14 +98,14 @@
                   offsetFromSymbolStart = "132">
                </Location>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - b72ecada9c3bf73f"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - 5fa98b7310fc157f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.viewModel.modify : Swift.Optional&lt;Matey.HomeViewModelInterface&gt;"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -113,14 +113,14 @@
                   offsetFromSymbolStart = "0">
                </Location>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - 398428984cfbdb08"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - d1036931c03c3948"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.viewModel.modify : Swift.Optional&lt;Matey.HomeViewModelInterface&gt; with unmangled suffix &quot;.resume.0&quot;"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -128,14 +128,14 @@
                   offsetFromSymbolStart = "15">
                </Location>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - b3a5edf9f4cd92"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - e834e44475332fd2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Matey.HomeViewController"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -143,14 +143,14 @@
                   offsetFromSymbolStart = "645">
                </Location>
                <Location
-                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - 78450f8b700504de"
+                  uuid = "1B0767F3-5A81-4170-BFCB-28D91E376B7F - 90c24e22fcc2e69e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Matey.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Matey.HomeViewController&gt;"
                   moduleName = "Matey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/firatpolat/Desktop/Matey/Mateyy/Matey/Controllers/HomeViewController.swift"
+                  urlString = "file:///Users/firatpolat/Matey/Matey/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
