@@ -86,7 +86,7 @@ extension HomeViewController: HomeViewControllerInterface {
         menuButtonFrame.origin.x = view.bounds.width/10 * 8
         plusButton.frame = menuButtonFrame
 
-        plusButton.backgroundColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+        plusButton.backgroundColor = ConstantsHomeVC.plusButtonBackgroundColor
         plusButton.layer.cornerRadius = menuButtonFrame.height/2
         view.addSubview(plusButton)
 

@@ -40,6 +40,8 @@ struct ConstantsHomeVC {
     static let labelHeaderText = "Where is my Money?"
     static let labelHeaderFontSize = 24.0
     static let labelHeaderTextColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+
+    static let plusButtonBackgroundColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
 }
 
 
