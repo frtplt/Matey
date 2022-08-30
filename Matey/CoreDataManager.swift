@@ -12,8 +12,8 @@ import UIKit
 
 protocol CoreDataManagerInterface: AnyObject {
   func saveContext()
-  func insertPerson(name: String, friend: String, lend: String, borrow: String, id: UUID) -> Person?
-  func update(name: String, friend: String, lend: String, borrow: String, id: UUID, person: Person)
+  func insertPerson(name: String, friend: String, lend: String, borrow: String, username: String) -> Person?
+  func update(name: String, friend: String, lend: String, borrow: String, username: String, person: Person)
   func delete(person: Person)
 }
 
@@ -47,7 +47,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
 
-  func insertPerson(name: String, friend: String, lend: String, borrow: String, id: UUID) -> Person? {
+  func insertPerson(name: String, friend: String, lend: String, borrow: String, username: String) -> Person? {
 
     let managedContext = persistentContainer.viewContext
 
@@ -61,7 +61,7 @@ class CoreDataManager: CoreDataManagerInterface {
     person.setValue(friend, forKeyPath: "friend")
     person.setValue(lend, forKeyPath: "lend")
     person.setValue(borrow, forKeyPath: "borrow")
-    person.setValue(id, forKeyPath: "id")
+    person.setValue(username, forKeyPath: "username")
 
     //  You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block.
 
@@ -74,7 +74,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
   
-  func update(name: String, friend: String, lend: String, borrow: String, id: UUID, person: Person) {
+  func update(name: String, friend: String, lend: String, borrow: String, username: String, person: Person) {
 
     let context = persistentContainer.viewContext
     
@@ -83,7 +83,7 @@ class CoreDataManager: CoreDataManagerInterface {
       person.setValue(friend, forKeyPath: "friend")
       person.setValue(lend, forKeyPath: "lend")
       person.setValue(borrow, forKeyPath: "borrow")
-      person.setValue(id, forKeyPath: "id")
+      person.setValue(username, forKeyPath: "username")
       /*
        You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block. Finally, insert the new managed object into the people array so it shows up when the table view reloads.
        */
@@ -119,7 +119,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
   
-  func fetchAllPersons() -> [Person]?{
+  func fetchCurrentPerson(username: String) -> [Person]?{
     /*Before you can do anything with Core Data, you need a managed object context. */
     let managedContext = persistentContainer.viewContext
     
@@ -128,6 +128,7 @@ class CoreDataManager: CoreDataManagerInterface {
      Initializing a fetch request with init(entityName:), fetches all objects of a particular entity. This is what you do here to fetch all Person entities.
      */
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+    fetchRequest.predicate = NSPredicate(format: "username == %@" ,username as CVarArg)
     
     /*You hand the fetch request over to the managed object context to do the heavy lifting. fetch(_:) returns an array of managed objects meeting the criteria specified by the fetch request.*/
     do {
@@ -139,7 +140,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
   
-  func delete(id: UUID) -> [Person]? {
+    func delete(username: String) -> [Person]? {
     /*get reference to appdelegate file*/
       
     /*get reference of managed object context*/
@@ -149,7 +150,7 @@ class CoreDataManager: CoreDataManagerInterface {
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
     
     /*pass your condition with NSPredicate. We only want to delete those records which match our condition*/
-    fetchRequest.predicate = NSPredicate(format: "id == %@" ,id as CVarArg)
+    fetchRequest.predicate = NSPredicate(format: "username == %@" ,username as CVarArg)
     do {
       
       /*managedContext.fetch(fetchRequest) will return array of person objects [personObjects]*/

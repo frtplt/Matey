@@ -36,12 +36,9 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = HomeViewModel(view: HomeViewController())
+        viewModel = HomeViewModel(view: self)
         viewModel?.notifyViewDidload()
     }
-
-    // MARK: - Functions
-
 }
 
     // MARK: - Interface Setup
@@ -96,7 +93,7 @@ extension HomeViewController: HomeViewControllerInterface {
         plusButton.setImage(UIImage(named: "plus"), for: .normal)
         plusButton.imageView?.contentMode = .scaleToFill
         plusButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        plusButton.addTarget(self, action: #selector(plusButtonAction(sender:)), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusButtonAction), for: .touchUpInside)
 
         view.layoutIfNeeded()
         plusButton.bringSubviewToFront(self.view)
@@ -104,7 +101,7 @@ extension HomeViewController: HomeViewControllerInterface {
 
     // MARK: - Actions
 
-    @objc private func plusButtonAction(sender: UIButton) {
+    @objc private func plusButtonAction() {
         print("Tapped")
         guard let viewController = self.storyboard?.instantiateViewController(ofType: HistoryViewController.self) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)

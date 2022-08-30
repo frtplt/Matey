@@ -8,15 +8,15 @@
 import Foundation
 
 protocol HomeViewModelInterface: AnyObject {
-    var allPerson: [Person]? { get }
+    var currentUserData: [Person]? { get }
     func notifyViewDidload()
-    func getAllData() -> [Person]?
+    func currentUserData(username: String) -> [Person]?
 }
 
 final class HomeViewModel {
 
     private weak var view: HomeViewControllerInterface?
-    var allPerson: [Person]?
+    var currentUserData: [Person]?
     var coreDataManager = CoreDataManager()
 
     init(view: HomeViewControllerInterface?) {
@@ -31,8 +31,8 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setupPlusButton()
     }
 
-    func getAllData() -> [Person]? {
-        allPerson = coreDataManager.fetchAllPersons()
-        return allPerson
+    func currentUserData(username: String) -> [Person]? {
+        currentUserData = coreDataManager.fetchCurrentPerson(username: username)
+        return currentUserData
     }
 }
