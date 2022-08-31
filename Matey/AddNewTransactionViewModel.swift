@@ -7,16 +7,29 @@
 
 import Foundation
 
-protocol AddNewTransactionInterface: AnyObject {
+protocol AddNewTransactionViewModelInterface: AnyObject {
     func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String)
+    func notifyViewDidload()
 }
 
-class AddNewTransactionViewModel: AddNewTransactionInterface {
+class AddNewTransactionViewModel {
 
-    var coreDataManager = CoreDataManager()
+    private weak var view: AddNewTransactionViewControllerInterface?
+    private var coreDataManager = CoreDataManager()
+
+    init(view: AddNewTransactionViewControllerInterface?) {
+        self.view = view
+    }
 
     func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String) {
         coreDataManager.insertPerson(name: name, friend: friend, lend: lend, borrow: borrow, username: username)
+    }
+}
+
+extension AddNewTransactionViewModel: AddNewTransactionViewModelInterface {
+
+    func notifyViewDidload() {
+        view?.uiInit()
     }
 }
 

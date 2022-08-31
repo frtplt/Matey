@@ -102,8 +102,7 @@ extension HomeViewController: HomeViewControllerInterface {
     // MARK: - Actions
 
     @objc private func plusButtonAction() {
-        print("Tapped")
-        guard let viewController = self.storyboard?.instantiateViewController(ofType: HistoryViewController.self) else { return }
+        guard let viewController = UIStoryboard(name: "AddNewTransaction", bundle: Bundle.main).instantiateInitialViewController(ofType: AddNewTransactionViewController?.self) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

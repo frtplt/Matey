@@ -43,4 +43,20 @@ struct ConstantsHomeVC {
     static let labelHeaderTextColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
 }
 
+struct ConstantsAddNewTransactionVC {
+    static let title = "Add New Transaction"
+    static let navigationBarTintColor = UIColor.white
+    static let textFieldRegistrantsNamePlaceholder = "Your Name"
+    static let textFieldRegistrantsUsernamePlaceholder = "Your Username"
+    static let textFieldFriendUsernamePlaceholder = "Friend Username"
+    static let textFieldLendAmountPlaceholder = "Lend Amount"
+    static let textFieldBorrowAmountPlaceholder = "Borrow Amount"
+    static let textFieldLendAmountKeyboardType = UIKeyboardType.decimalPad
+    static let textFieldBorrowAmountKeyboardType = UIKeyboardType.decimalPad
+    static let buttonSaveNewTransactionBackgroundColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+    static let buttonSaveNewTransactionTintColor = UIColor.black
+    static let buttonSaveNewTransactionCornerRadius = 16.0
+    static let buttonSaveNewTransactionTitle = "Save"
+}
+
 

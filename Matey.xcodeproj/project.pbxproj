@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */; };
 		D62FF67928B048B80050B51A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67828B048B80050B51A /* HomeViewModel.swift */; };
+		D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */; };
 		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
 		D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */; };
 		D6B4409128B62145004B0F0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409028B62145004B0F0D /* Constants.swift */; };
 		D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */; };
+		D6BE6A5328BE7F0200764DE3 /* AddNewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE6A5228BE7F0200764DE3 /* AddNewTransactionViewController.swift */; };
+		D6BE6A5528BE807500764DE3 /* AddNewTransaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BE6A5428BE807500764DE3 /* AddNewTransaction.storyboard */; };
+		D6BE6A5728BE8DCD00764DE3 /* UITextfield + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE6A5628BE8DCD00764DE3 /* UITextfield + Ext.swift */; };
+		D6BE6A5928BE98AF00764DE3 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE6A5828BE98AF00764DE3 /* UIViewController + Ext.swift */; };
 		D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */; };
 		D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */; };
 		D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C4FEAD28A7A7B500CDFDAC /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 		D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6B4409028B62145004B0F0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Ext .swift"; sourceTree = "<group>"; };
+		D6BE6A5228BE7F0200764DE3 /* AddNewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTransactionViewController.swift; sourceTree = "<group>"; };
+		D6BE6A5428BE807500764DE3 /* AddNewTransaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewTransaction.storyboard; sourceTree = "<group>"; };
+		D6BE6A5628BE8DCD00764DE3 /* UITextfield + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield + Ext.swift"; sourceTree = "<group>"; };
+		D6BE6A5828BE98AF00764DE3 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		D6C4FEA428A7A7B500CDFDAC /* Matey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C4FEA728A7A7B500CDFDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6C4FEA928A7A7B500CDFDAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */,
+				D6BE6A5628BE8DCD00764DE3 /* UITextfield + Ext.swift */,
+				D6BE6A5828BE98AF00764DE3 /* UIViewController + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -114,6 +124,7 @@
 				D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */,
 				D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */,
 				D6C4FED128A7AD1000CDFDAC /* HistoryViewController.swift */,
+				D6BE6A5228BE7F0200764DE3 /* AddNewTransactionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 				D6C4FEC528A7A95900CDFDAC /* Home.storyboard */,
 				D6C4FEC728A7A96600CDFDAC /* Profile.storyboard */,
 				D6C4FEC928A7A96E00CDFDAC /* History.storyboard */,
+				D6BE6A5428BE807500764DE3 /* AddNewTransaction.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -209,6 +221,7 @@
 				D6C4FEB428A7A7B700CDFDAC /* Assets.xcassets in Resources */,
 				D6C4FEC828A7A96600CDFDAC /* Profile.storyboard in Resources */,
 				D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */,
+				D6BE6A5528BE807500764DE3 /* AddNewTransaction.storyboard in Resources */,
 				D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */,
 				D6C4FEC628A7A95900CDFDAC /* Home.storyboard in Resources */,
 				D6C4FECA28A7A96E00CDFDAC /* History.storyboard in Resources */,
@@ -254,7 +267,10 @@
 				D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */,
 				D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */,
 				D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */,
+				D6BE6A5328BE7F0200764DE3 /* AddNewTransactionViewController.swift in Sources */,
 				D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */,
+				D6BE6A5928BE98AF00764DE3 /* UIViewController + Ext.swift in Sources */,
+				D6BE6A5728BE8DCD00764DE3 /* UITextfield + Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
