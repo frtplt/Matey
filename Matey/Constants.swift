@@ -57,6 +57,13 @@ struct ConstantsAddNewTransactionVC {
     static let buttonSaveNewTransactionTintColor = UIColor.black
     static let buttonSaveNewTransactionCornerRadius = 16.0
     static let buttonSaveNewTransactionTitle = "Save"
+    static let messageTransactionSuccessfully = "Transaction saved successfully!"
+    static let messageTransactionSaved = "Saved"
+    static let messageTransactionYourNameCantEmpty = "Your name can not be empty!"
+    static let messageTransactionYourUsernameCantEmpty =  "Your username can not be empty!"
+    static let messageTransactionFriendUsernameCantEmpty = "Friend username can not be empty!"
+    static let messageWarning = "Warning"
+    static let messageDone = "Done"
 }
 
 

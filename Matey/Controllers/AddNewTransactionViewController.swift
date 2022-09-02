@@ -5,11 +5,12 @@
 //  Created by Firat Polat on 30.08.2022.
 //
 
-import Foundation
 import UIKit
 
 protocol AddNewTransactionViewControllerInterface: AnyObject {
     func uiInit()
+    func showAlert(title: String, message: String)
+    func saveTransaction()
 }
 
 final class AddNewTransactionViewController: UIViewController {
@@ -33,28 +34,7 @@ final class AddNewTransactionViewController: UIViewController {
     // MARK: - When user pressed the save button
 
     @IBAction func saveTransactionButtonAction(_ sender: UIButton) {
-        if validationTextFields() {
-            viewModel?.saveTransaction(name: textFieldRegistrantsName.text ?? "", friend: textFieldFriendUsername.text ?? "", lend: textFieldLendAmount.text ?? "0.0", borrow: textFieldBorrowAmount.text ?? "0.0", username: textFieldRegistrantsUsername.text ?? "")
-            showAlert(title: "Saved", message: "Transaction saved successfully!")
-            setupTextFieldEmpty()
-        }
-    }
-
-    // MARK: - Validation func for textfields
-
-    private func validationTextFields() -> Bool {
-        if textFieldRegistrantsName.text == "" {
-            showAlert(title: "Warning", message: "Your name can not be empty!")
-            return false
-        } else if textFieldRegistrantsUsername.text == "" {
-            showAlert(title: "Warning", message: "Your username can not be empty!")
-            return false
-        } else if textFieldFriendUsername.text == "" {
-            showAlert(title: "Warning", message: "Friend username can not be empty!")
-            return false
-        } else {
-            return true
-        }
+        saveTransaction()
     }
 
     // MARK: - Setup textfields empty func
@@ -101,5 +81,29 @@ extension AddNewTransactionViewController: AddNewTransactionViewControllerInterf
         buttonSaveNewTransaction.tintColor = ConstantsAddNewTransactionVC.buttonSaveNewTransactionTintColor
         buttonSaveNewTransaction.layer.cornerRadius = ConstantsAddNewTransactionVC.buttonSaveNewTransactionCornerRadius
         buttonSaveNewTransaction.setTitle(ConstantsAddNewTransactionVC.buttonSaveNewTransactionTitle, for: .normal)
+    }
+
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: ConstantsAddNewTransactionVC.messageDone, style: UIAlertAction.Style.default) { (action) in }
+
+        alertController.addAction(doneAction)
+        alertController.view.tintColor = UIColor.black
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func saveTransaction() {
+        let textRegistrantsName = textFieldRegistrantsName.text ?? ""
+        let textFieldRegistrantsUsername = textFieldRegistrantsUsername.text ?? ""
+        let textFieldFriendUsername = textFieldFriendUsername.text ?? ""
+
+        if viewModel?.validationTextFields(textRegistrantsName: textRegistrantsName, textFieldRegistrantsUsername: textFieldRegistrantsUsername, textFieldFriendUsername: textFieldFriendUsername) == true {
+            viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: textFieldLendAmount.text ?? "0.0", borrow: textFieldBorrowAmount.text ?? "0.0", username: textFieldRegistrantsUsername)
+            showAlert(title: ConstantsAddNewTransactionVC.messageTransactionSaved, message: ConstantsAddNewTransactionVC.messageTransactionSuccessfully)
+            setupTextFieldEmpty()
+        }
+        else {
+            viewModel?.validationTextFields(textRegistrantsName: textRegistrantsName, textFieldRegistrantsUsername: textFieldRegistrantsUsername, textFieldFriendUsername: textFieldFriendUsername)
+        }
     }
 }

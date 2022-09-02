@@ -5,14 +5,13 @@
 //  Created by Firat Polat on 20.08.2022.
 //
 
-import Foundation
-
 protocol AddNewTransactionViewModelInterface: AnyObject {
     func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String)
     func notifyViewDidload()
+    func validationTextFields(textRegistrantsName: String, textFieldRegistrantsUsername: String, textFieldFriendUsername: String) -> Bool
 }
 
-class AddNewTransactionViewModel {
+final class AddNewTransactionViewModel {
 
     private weak var view: AddNewTransactionViewControllerInterface?
     private var coreDataManager = CoreDataManager()
@@ -26,10 +25,26 @@ class AddNewTransactionViewModel {
     }
 }
 
+// MARK: - Interface Setup
+
 extension AddNewTransactionViewModel: AddNewTransactionViewModelInterface {
 
     func notifyViewDidload() {
         view?.uiInit()
+    }
+
+    func validationTextFields(textRegistrantsName: String, textFieldRegistrantsUsername: String, textFieldFriendUsername: String) -> Bool {
+        if textRegistrantsName.isEmpty {
+            view?.showAlert(title: ConstantsAddNewTransactionVC.messageWarning, message: ConstantsAddNewTransactionVC.messageTransactionYourNameCantEmpty)
+            return false
+        } else if textFieldRegistrantsUsername == "" {
+            view?.showAlert(title: ConstantsAddNewTransactionVC.messageWarning, message: ConstantsAddNewTransactionVC.messageTransactionYourUsernameCantEmpty)
+            return false
+        } else if textFieldFriendUsername == "" {
+            view?.showAlert(title: ConstantsAddNewTransactionVC.messageWarning, message: ConstantsAddNewTransactionVC.messageTransactionFriendUsernameCantEmpty)
+            return false
+        }
+        return true
     }
 }
 
