@@ -30,7 +30,21 @@
 		D6C4FECE28A7ACEE00CDFDAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */; };
 		D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */; };
 		D6C4FED228A7AD1000CDFDAC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FED128A7AD1000CDFDAC /* HistoryViewController.swift */; };
+		D6C6C33D28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C33C28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift */; };
+		D6C6C33F28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C33E28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift */; };
+		D6C6C34128C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C34028C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift */; };
+		D6C6C34328C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C34228C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6C6C33328C3EB8D000AAE28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6C4FE9C28A7A7B500CDFDAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6C4FEA328A7A7B500CDFDAC;
+			remoteInfo = Matey;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D62FF67828B048B80050B51A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -58,10 +72,22 @@
 		D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D6C4FED128A7AD1000CDFDAC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D6C6C32F28C3EB8D000AAE28 /* MateyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MateyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6C6C33C28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddNewTransactionViewModel.swift; sourceTree = "<group>"; };
+		D6C6C33E28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddNewTransactionViewController.swift; sourceTree = "<group>"; };
+		D6C6C34028C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTransactionViewModelUnitTests.swift; sourceTree = "<group>"; };
+		D6C6C34228C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTransactionViewControllerUnitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D6C4FEA128A7A7B500CDFDAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6C6C32C28C3EB8D000AAE28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				D6C4FEA628A7A7B500CDFDAC /* Matey */,
+				D6C6C33028C3EB8D000AAE28 /* MateyTests */,
 				D6C4FEA528A7A7B500CDFDAC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				D6C4FEA428A7A7B500CDFDAC /* Matey.app */,
+				D6C6C32F28C3EB8D000AAE28 /* MateyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +186,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D6C6C33028C3EB8D000AAE28 /* MateyTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6C6C33928C3EBAC000AAE28 /* AddNewTransactionTests */,
+			);
+			path = MateyTests;
+			sourceTree = "<group>";
+		};
+		D6C6C33928C3EBAC000AAE28 /* AddNewTransactionTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6C6C33C28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift */,
+				D6C6C33E28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift */,
+				D6C6C34028C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift */,
+				D6C6C34228C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift */,
+			);
+			path = AddNewTransactionTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,6 +226,24 @@
 			productReference = D6C4FEA428A7A7B500CDFDAC /* Matey.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D6C6C32E28C3EB8D000AAE28 /* MateyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6C6C33728C3EB8D000AAE28 /* Build configuration list for PBXNativeTarget "MateyTests" */;
+			buildPhases = (
+				D6C6C32B28C3EB8D000AAE28 /* Sources */,
+				D6C6C32C28C3EB8D000AAE28 /* Frameworks */,
+				D6C6C32D28C3EB8D000AAE28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6C6C33428C3EB8D000AAE28 /* PBXTargetDependency */,
+			);
+			name = MateyTests;
+			productName = MateyTests;
+			productReference = D6C6C32F28C3EB8D000AAE28 /* MateyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,6 +256,11 @@
 				TargetAttributes = {
 					D6C4FEA328A7A7B500CDFDAC = {
 						CreatedOnToolsVersion = 13.3.1;
+					};
+					D6C6C32E28C3EB8D000AAE28 = {
+						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
+						TestTargetID = D6C4FEA328A7A7B500CDFDAC;
 					};
 				};
 			};
@@ -208,6 +278,7 @@
 			projectRoot = "";
 			targets = (
 				D6C4FEA328A7A7B500CDFDAC /* Matey */,
+				D6C6C32E28C3EB8D000AAE28 /* MateyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +296,13 @@
 				D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */,
 				D6C4FEC628A7A95900CDFDAC /* Home.storyboard in Resources */,
 				D6C4FECA28A7A96E00CDFDAC /* History.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6C6C32D28C3EB8D000AAE28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +352,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6C6C32B28C3EB8D000AAE28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6C6C34328C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift in Sources */,
+				D6C6C34128C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift in Sources */,
+				D6C6C33F28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift in Sources */,
+				D6C6C33D28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6C6C33428C3EB8D000AAE28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6C4FEA328A7A7B500CDFDAC /* Matey */;
+			targetProxy = D6C6C33328C3EB8D000AAE28 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D6C4FEAD28A7A7B500CDFDAC /* Main.storyboard */ = {
@@ -466,6 +563,55 @@
 			};
 			name = Release;
 		};
+		D6C6C33528C3EB8D000AAE28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7RS44LAM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firat.MateyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Matey.app/Matey";
+			};
+			name = Debug;
+		};
+		D6C6C33628C3EB8D000AAE28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7RS44LAM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firat.MateyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Matey.app/Matey";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,6 +629,15 @@
 			buildConfigurations = (
 				D6C4FEBC28A7A7B700CDFDAC /* Debug */,
 				D6C4FEBD28A7A7B700CDFDAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6C6C33728C3EB8D000AAE28 /* Build configuration list for PBXNativeTarget "MateyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6C6C33528C3EB8D000AAE28 /* Debug */,
+				D6C6C33628C3EB8D000AAE28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
