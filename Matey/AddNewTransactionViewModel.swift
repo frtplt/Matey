@@ -40,7 +40,7 @@ extension AddNewTransactionViewModel: AddNewTransactionViewModelInterface {
         } else if textFieldRegistrantsUsername.isEmpty {
             view?.showAlert(title: ConstantsAddNewTransactionVC.messageWarning, message: ConstantsAddNewTransactionVC.messageTransactionYourUsernameCantEmpty)
             return false
-        } else if textFieldFriendUsername == "" {
+        } else if textFieldFriendUsername.isEmpty {
             view?.showAlert(title: ConstantsAddNewTransactionVC.messageWarning, message: ConstantsAddNewTransactionVC.messageTransactionFriendUsernameCantEmpty)
             return false
         }
