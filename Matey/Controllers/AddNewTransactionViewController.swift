@@ -98,7 +98,7 @@ extension AddNewTransactionViewController: AddNewTransactionViewControllerInterf
         let textFieldFriendUsername = textFieldFriendUsername.text ?? ""
 
         if viewModel?.validationTextFields(textRegistrantsName: textRegistrantsName, textFieldRegistrantsUsername: textFieldRegistrantsUsername, textFieldFriendUsername: textFieldFriendUsername) == true {
-            viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: textFieldLendAmount.text ?? "0.0", borrow: textFieldBorrowAmount.text ?? "0.0", username: textFieldRegistrantsUsername)
+            viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: Double(textFieldLendAmount.text ?? "0.0") ?? 0.0, borrow: Double(textFieldBorrowAmount.text ?? "0.0") ?? 0.0, username: textFieldRegistrantsUsername, id: UUID())
             showAlert(title: ConstantsAddNewTransactionVC.messageTransactionSaved, message: ConstantsAddNewTransactionVC.messageTransactionSuccessfully)
             setupTextFieldEmpty()
         }

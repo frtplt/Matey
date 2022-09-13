@@ -12,8 +12,8 @@ import UIKit
 
 protocol CoreDataManagerInterface: AnyObject {
   func saveContext()
-  func insertPerson(name: String, friend: String, lend: String, borrow: String, username: String) -> Person?
-  func update(name: String, friend: String, lend: String, borrow: String, username: String, person: Person)
+  func insertPerson(name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID) -> Person?
+  func update(name: String, friend: String, lend: String, borrow: String, username: String, id: UUID, person: Person)
   func delete(person: Person)
 }
 
@@ -47,7 +47,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
 
-  func insertPerson(name: String, friend: String, lend: String, borrow: String, username: String) -> Person? {
+    func insertPerson(name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID) -> Person? {
 
     let managedContext = persistentContainer.viewContext
 
@@ -62,6 +62,7 @@ class CoreDataManager: CoreDataManagerInterface {
     person.setValue(lend, forKeyPath: "lend")
     person.setValue(borrow, forKeyPath: "borrow")
     person.setValue(username, forKeyPath: "username")
+    person.setValue(id, forKeyPath: "id")
 
     //  You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block.
 
@@ -74,7 +75,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
   
-  func update(name: String, friend: String, lend: String, borrow: String, username: String, person: Person) {
+    func update(name: String, friend: String, lend: String, borrow: String, username: String, id: UUID, person: Person) {
 
     let context = persistentContainer.viewContext
     
@@ -84,6 +85,7 @@ class CoreDataManager: CoreDataManagerInterface {
       person.setValue(lend, forKeyPath: "lend")
       person.setValue(borrow, forKeyPath: "borrow")
       person.setValue(username, forKeyPath: "username")
+      person.setValue(id, forKeyPath: "id")
       /*
        You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block. Finally, insert the new managed object into the people array so it shows up when the table view reloads.
        */
@@ -140,7 +142,7 @@ class CoreDataManager: CoreDataManagerInterface {
     }
   }
   
-    func delete(username: String) -> [Person]? {
+    func delete(id: UUID) -> [Person]? {
     /*get reference to appdelegate file*/
       
     /*get reference of managed object context*/
@@ -150,7 +152,7 @@ class CoreDataManager: CoreDataManagerInterface {
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
     
     /*pass your condition with NSPredicate. We only want to delete those records which match our condition*/
-    fetchRequest.predicate = NSPredicate(format: "username == %@" ,username as CVarArg)
+    fetchRequest.predicate = NSPredicate(format: "id == %@" ,id as CVarArg)
     do {
       
       /*managedContext.fetch(fetchRequest) will return array of person objects [personObjects]*/

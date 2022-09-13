@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
 
     //alert controller
-    func showAlert(title: String?, message: String?, buttonName: String = "Done", completion: (()-> void)? = nil) {
+    func showAlert(title: String?, message: String?, buttonName: String = "Done", completion: (()-> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let doneAction = UIAlertAction(title: buttonName, style: UIAlertAction.Style.default) { (action) in
             completion?()

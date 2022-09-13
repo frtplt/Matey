@@ -11,6 +11,7 @@
 		D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */; };
 		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
 		D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */; };
+		D6B3CBC028CC812E0082F678 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3CBBE28CC812E0082F678 /* HomeCell.swift */; };
 		D6B4409128B62145004B0F0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409028B62145004B0F0D /* Constants.swift */; };
 		D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */; };
 		D6BE6A5328BE7F0200764DE3 /* AddNewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE6A5228BE7F0200764DE3 /* AddNewTransactionViewController.swift */; };
@@ -51,6 +52,7 @@
 		D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewTransactionViewModel.swift; path = Matey/AddNewTransactionViewModel.swift; sourceTree = SOURCE_ROOT; };
 		D666CD0C28A96682002B4E73 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D666CD0E28A96CC3002B4E73 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D6B3CBBE28CC812E0082F678 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		D6B4409028B62145004B0F0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Ext .swift"; sourceTree = "<group>"; };
 		D6BE6A5228BE7F0200764DE3 /* AddNewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTransactionViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		D6C4FEC428A7A88600CDFDAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6B3CBBE28CC812E0082F678 /* HomeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */,
 				D6BE6A5328BE7F0200764DE3 /* AddNewTransactionViewController.swift in Sources */,
 				D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */,
+				D6B3CBC028CC812E0082F678 /* HomeCell.swift in Sources */,
 				D6BE6A5928BE98AF00764DE3 /* UIViewController + Ext.swift in Sources */,
 				D6BE6A5728BE8DCD00764DE3 /* UITextfield + Ext.swift in Sources */,
 			);

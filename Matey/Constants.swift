@@ -41,6 +41,9 @@ struct ConstantsHomeVC {
     static let labelHeaderText = "Where is my Money?"
     static let labelHeaderFontSize = 24.0
     static let labelHeaderTextColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+
+    static let homeCellIdentifier = "HomeCell"
+    static let homeDeleteAlertMessage = "Are you sure want to delete transaction?"
 }
 
 struct ConstantsAddNewTransactionVC {
