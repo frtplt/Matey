@@ -6,19 +6,20 @@
 //
 
 @testable import Matey
+import UIKit
 
 final class MockAddNewTransactionViewModel: AddNewTransactionViewModelInterface {
 
     var invokedSaveTransaction = false
     var invokedSaveTransactionCount = 0
-    var invokedSaveTransactionParameters: (name: String, friend: String, lend: String, borrow: String, username: String)?
-    var invokedSaveTransactionParametersList = [(name: String, friend: String, lend: String, borrow: String, username: String)]()
+    var invokedSaveTransactionParameters: (name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID)?
+    var invokedSaveTransactionParametersList = [(name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID)]()
 
-    func saveTransaction(name: String, friend: String, lend: String, borrow: String, username: String) {
+    func saveTransaction(name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID) {
         invokedSaveTransaction = true
         invokedSaveTransactionCount += 1
-        invokedSaveTransactionParameters = (name, friend, lend, borrow, username)
-        invokedSaveTransactionParametersList.append((name, friend, lend, borrow, username))
+        invokedSaveTransactionParameters = (name, friend, lend, borrow, username, id)
+        invokedSaveTransactionParametersList.append((name, friend, lend, borrow, username, id))
     }
 
     var invokedNotifyViewDidload = false

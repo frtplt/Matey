@@ -22,7 +22,7 @@ final class AddNewTransactionViewModelUnitTests: XCTestCase {
     }
 
     func testSaveTransaction() {
-        sut?.saveTransaction(name: "Fırat", friend: "Ulaş", lend: "1000", borrow: "2000", username: "frtplt")
+        sut?.saveTransaction(name: "Fırat", friend: "Ulaş", lend: 1000, borrow: 2000, username: "frtplt", id: UUID())
 
         XCTAssertEqual(sut?.invokedSaveTransaction, true)
     }

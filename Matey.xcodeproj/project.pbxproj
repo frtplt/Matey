@@ -31,6 +31,10 @@
 		D6C4FECE28A7ACEE00CDFDAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */; };
 		D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */; };
 		D6C4FED228A7AD1000CDFDAC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4FED128A7AD1000CDFDAC /* HistoryViewController.swift */; };
+		D6C61E4B28D0A9F3003923C9 /* MockHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C61E4A28D0A9F3003923C9 /* MockHomeViewModel.swift */; };
+		D6C61E4D28D0AA3E003923C9 /* HomeViewModelUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C61E4C28D0AA3E003923C9 /* HomeViewModelUnitTests.swift */; };
+		D6C61E4F28D0C0FF003923C9 /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C61E4E28D0C0FF003923C9 /* MockHomeViewController.swift */; };
+		D6C61E5128D0C2D1003923C9 /* HomeViewControllerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C61E5028D0C2D1003923C9 /* HomeViewControllerUnitTests.swift */; };
 		D6C6C33D28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C33C28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift */; };
 		D6C6C33F28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C33E28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift */; };
 		D6C6C34128C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C34028C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift */; };
@@ -74,6 +78,10 @@
 		D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D6C4FED128A7AD1000CDFDAC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D6C61E4A28D0A9F3003923C9 /* MockHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewModel.swift; sourceTree = "<group>"; };
+		D6C61E4C28D0AA3E003923C9 /* HomeViewModelUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelUnitTests.swift; sourceTree = "<group>"; };
+		D6C61E4E28D0C0FF003923C9 /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
+		D6C61E5028D0C2D1003923C9 /* HomeViewControllerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerUnitTests.swift; sourceTree = "<group>"; };
 		D6C6C32F28C3EB8D000AAE28 /* MateyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MateyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C6C33C28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddNewTransactionViewModel.swift; sourceTree = "<group>"; };
 		D6C6C33E28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddNewTransactionViewController.swift; sourceTree = "<group>"; };
@@ -189,9 +197,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D6C61E4728D0A8D7003923C9 /* HomeViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6C61E4A28D0A9F3003923C9 /* MockHomeViewModel.swift */,
+				D6C61E4C28D0AA3E003923C9 /* HomeViewModelUnitTests.swift */,
+				D6C61E4E28D0C0FF003923C9 /* MockHomeViewController.swift */,
+				D6C61E5028D0C2D1003923C9 /* HomeViewControllerUnitTests.swift */,
+			);
+			path = HomeViewTests;
+			sourceTree = "<group>";
+		};
 		D6C6C33028C3EB8D000AAE28 /* MateyTests */ = {
 			isa = PBXGroup;
 			children = (
+				D6C61E4728D0A8D7003923C9 /* HomeViewTests */,
 				D6C6C33928C3EBAC000AAE28 /* AddNewTransactionTests */,
 			);
 			path = MateyTests;
@@ -362,7 +382,11 @@
 			files = (
 				D6C6C34328C3F353000AAE28 /* AddNewTransactionViewControllerUnitTests.swift in Sources */,
 				D6C6C34128C3EEE2000AAE28 /* AddNewTransactionViewModelUnitTests.swift in Sources */,
+				D6C61E4F28D0C0FF003923C9 /* MockHomeViewController.swift in Sources */,
 				D6C6C33F28C3EE86000AAE28 /* MockAddNewTransactionViewController.swift in Sources */,
+				D6C61E4D28D0AA3E003923C9 /* HomeViewModelUnitTests.swift in Sources */,
+				D6C61E5128D0C2D1003923C9 /* HomeViewControllerUnitTests.swift in Sources */,
+				D6C61E4B28D0A9F3003923C9 /* MockHomeViewModel.swift in Sources */,
 				D6C6C33D28C3EC41000AAE28 /* MockAddNewTransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
