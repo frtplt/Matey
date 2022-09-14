@@ -49,7 +49,7 @@ struct ConstantsHomeVC {
 struct ConstantsAddNewTransactionVC {
     static let title = "Add New Transaction"
     static let navigationBarTintColor = UIColor.white
-    static let textFieldRegistrantsNamePlaceholder = "Your Name"
+    static let textFieldRegistrantsNamePlaceholder = "Friend Name"
     static let textFieldRegistrantsUsernamePlaceholder = "Your Username"
     static let textFieldFriendUsernamePlaceholder = "Friend Username"
     static let textFieldLendAmountPlaceholder = "Lend Amount"
@@ -67,6 +67,21 @@ struct ConstantsAddNewTransactionVC {
     static let messageTransactionFriendUsernameCantEmpty = "Friend username can not be empty!"
     static let messageWarning = "Warning"
     static let messageDone = "Done"
+}
+
+struct ConstantsOnboardingVC {
+    static let onboardingBackgroundColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
+    static let onboardingImageName = "personOnboarding"
+    static let labelDescriptionText = "Easily Follow Transaction with Personal Profile"
+    static let labelUsernameTitleText = "Enter Your Name"
+    static let textFieldUsernamePlaceHolderText = "Please Enter Your Name"
+    static let buttonGetStartedTitleText = "Get Started"
+    static let buttonGetStartedColor = UIColor.white
+    static let buttonGetStartedCornerRadius = 8.0
+    static let messageUsernameSuccessfully = "Username saved successfully!"
+    static let messageUsernameSaved = "Saved"
+    static let messageWarning = "Warning"
+    static let messageTransactionUserNameCantEmpty = "Username can not be empty!"
 }
 
 

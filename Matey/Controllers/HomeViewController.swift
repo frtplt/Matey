@@ -33,6 +33,7 @@ final class HomeViewController: UIViewController {
 
     var coreDataManager = CoreDataManager()
     var viewModel: HomeViewModelInterface?
+    var currentUsername = UserDefaults.standard.value(forKey: "username") as? String
 
     // MARK: - Life Cycle
 
@@ -40,7 +41,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         viewModel = HomeViewModel(view: self)
-        viewModel?.currentUserData(username: "firat") // will be updated after doing the onboarding screen
+        viewModel?.currentUserData(username: currentUsername ?? "") // will be updated after doing the onboarding screen
         viewModel?.notifyViewDidload()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -48,7 +49,7 @@ final class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        viewModel?.currentUserData(username: "firat") // will be updated after doing the onboarding screen
+        viewModel?.currentUserData(username: currentUsername ?? "") // will be updated after doing the onboarding screen
         viewModel?.totalBorrowCount()
         viewModel?.totalLendCount()
         viewModel?.notifyViewDidload()
@@ -101,7 +102,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         alertController.addAction(UIAlertAction.init(title: "yes", style: .default, handler: { _ in
             self.collectionView.deleteItems(at: [indexPath])
             self.coreDataManager.delete(id: (person?.id)!)
-            self.viewModel?.currentUserData(username: "firat") // will be updated after doing the onboarding screen
+            self.viewModel?.currentUserData(username: self.currentUsername ?? "") // will be updated after doing the onboarding screen
             collectionView.reloadData()
         }))
 
@@ -120,7 +121,7 @@ extension HomeViewController: HomeViewControllerInterface {
 
     func uiInit() {
         title = ConstantsHomeVC.title
-        labelName.text = ConstantsHomeVC.labelNameText
+        labelName.text = currentUsername
         labelName.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelNameFontSize)
 
         labelWelcome.text = ConstantsHomeVC.labelWelcomeText
@@ -130,7 +131,7 @@ extension HomeViewController: HomeViewControllerInterface {
         labelTotalBalance.text = ConstantsHomeVC.labelTotalBalanceText
         labelTotalBalance.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelTotalBalanceFontSize)
         labelTotalBalance.textColor = .secondaryLabel
-        labelTotalBalanceAmount.text = "\(Double(Int(viewModel?.totalLend ?? 0.0) + Int(viewModel?.totalBorrow ?? 0.0))) ₺"
+        labelTotalBalanceAmount.text = "\(Double(Int(viewModel?.totalLend ?? 0.0) - Int(viewModel?.totalBorrow ?? 0.0))) ₺"
         labelTotalBalanceAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelTotalBalanceAmountFont)
 
         labelLend.text = ConstantsHomeVC.labelLendText

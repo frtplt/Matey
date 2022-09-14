@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D622F70D28D2085E0057F4CB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D622F70C28D2085E0057F4CB /* OnboardingViewController.swift */; };
+		D622F70F28D208700057F4CB /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D622F70E28D208700057F4CB /* Onboarding.storyboard */; };
+		D622F71128D20EBC0057F4CB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D622F71028D20EBC0057F4CB /* OnboardingViewModel.swift */; };
+		D622F71328D21CE70057F4CB /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D622F71228D21CE60057F4CB /* UserDefaults+Extension.swift */; };
 		D62FF67928B048B80050B51A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67828B048B80050B51A /* HomeViewModel.swift */; };
 		D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */; };
 		D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666CD0C28A96682002B4E73 /* CoreDataManager.swift */; };
@@ -52,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D622F70C28D2085E0057F4CB /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		D622F70E28D208700057F4CB /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		D622F71028D20EBC0057F4CB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		D622F71228D21CE60057F4CB /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		D62FF67828B048B80050B51A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewTransactionViewModel.swift; path = Matey/AddNewTransactionViewModel.swift; sourceTree = SOURCE_ROOT; };
 		D666CD0C28A96682002B4E73 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -113,6 +121,7 @@
 				D6B4409328B6298F004B0F0D /* Storyboard + Ext .swift */,
 				D6BE6A5628BE8DCD00764DE3 /* UITextfield + Ext.swift */,
 				D6BE6A5828BE98AF00764DE3 /* UIViewController + Ext.swift */,
+				D622F71228D21CE60057F4CB /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 		D6C4FEC028A7A82D00CDFDAC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D622F70C28D2085E0057F4CB /* OnboardingViewController.swift */,
 				D6C4FEBE28A7A82200CDFDAC /* MainTabBarViewController.swift */,
 				D6C4FECD28A7ACEE00CDFDAC /* HomeViewController.swift */,
 				D6C4FECF28A7AD0200CDFDAC /* ProfileViewController.swift */,
@@ -172,6 +182,7 @@
 			children = (
 				D62FF67A28B04AE00050B51A /* AddNewTransactionViewModel.swift */,
 				D62FF67828B048B80050B51A /* HomeViewModel.swift */,
+				D622F71028D20EBC0057F4CB /* OnboardingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 				D6C4FEC728A7A96600CDFDAC /* Profile.storyboard */,
 				D6C4FEC928A7A96E00CDFDAC /* History.storyboard */,
 				D6BE6A5428BE807500764DE3 /* AddNewTransaction.storyboard */,
+				D622F70E28D208700057F4CB /* Onboarding.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -317,6 +329,7 @@
 				D666CD0F28A96CC3002B4E73 /* .swiftlint.yml in Resources */,
 				D6BE6A5528BE807500764DE3 /* AddNewTransaction.storyboard in Resources */,
 				D6C4FEAF28A7A7B500CDFDAC /* Main.storyboard in Resources */,
+				D622F70F28D208700057F4CB /* Onboarding.storyboard in Resources */,
 				D6C4FEC628A7A95900CDFDAC /* Home.storyboard in Resources */,
 				D6C4FECA28A7A96E00CDFDAC /* History.storyboard in Resources */,
 			);
@@ -360,6 +373,7 @@
 				D62FF67B28B04AE00050B51A /* AddNewTransactionViewModel.swift in Sources */,
 				D6C4FEBF28A7A82200CDFDAC /* MainTabBarViewController.swift in Sources */,
 				D62FF67928B048B80050B51A /* HomeViewModel.swift in Sources */,
+				D622F70D28D2085E0057F4CB /* OnboardingViewController.swift in Sources */,
 				D6C4FEA828A7A7B500CDFDAC /* AppDelegate.swift in Sources */,
 				D6C4FEB228A7A7B500CDFDAC /* Matey.xcdatamodeld in Sources */,
 				D6C4FECE28A7ACEE00CDFDAC /* HomeViewController.swift in Sources */,
@@ -367,8 +381,10 @@
 				D6C4FED228A7AD1000CDFDAC /* HistoryViewController.swift in Sources */,
 				D6C4FED028A7AD0200CDFDAC /* ProfileViewController.swift in Sources */,
 				D666CD0D28A96682002B4E73 /* CoreDataManager.swift in Sources */,
+				D622F71328D21CE70057F4CB /* UserDefaults+Extension.swift in Sources */,
 				D6B4409428B6298F004B0F0D /* Storyboard + Ext .swift in Sources */,
 				D6BE6A5328BE7F0200764DE3 /* AddNewTransactionViewController.swift in Sources */,
+				D622F71128D20EBC0057F4CB /* OnboardingViewModel.swift in Sources */,
 				D6C4FEAA28A7A7B500CDFDAC /* SceneDelegate.swift in Sources */,
 				D6B3CBC028CC812E0082F678 /* HomeCell.swift in Sources */,
 				D6BE6A5928BE98AF00764DE3 /* UIViewController + Ext.swift in Sources */,

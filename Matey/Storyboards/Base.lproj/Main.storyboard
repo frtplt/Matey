@@ -9,7 +9,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="X7O-a5-Pqm">
             <objects>
-                <tabBarController id="66i-q0-7Px" customClass="MainTabBarViewController" customModule="Matey" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarViewController" id="66i-q0-7Px" customClass="MainTabBarViewController" customModule="Matey" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WEO-vN-3VW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

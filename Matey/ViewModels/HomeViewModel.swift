@@ -30,6 +30,8 @@ final class HomeViewModel {
     }
 }
 
+// MARK: - Interface Setup
+
 extension HomeViewModel: HomeViewModelInterface {
 
     func notifyViewDidload() {
