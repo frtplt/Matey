@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol OnboardingViewModelInterface: AnyObject {
     func notifyViewDidload()
-    func validationTextFields(textUserName: String) -> Bool
+    func isTextFieldValid(textUserName: String) -> Bool
     func saveUsername(username: String)
 }
 
@@ -22,7 +23,14 @@ final class OnboardingViewModel {
     }
 
     func saveUsername(username: String) {
-        UserDefaults.standard.set(username, forKey: "username")
+        if isTextFieldValid(textUserName: username) {
+            UserDefaults.standard.set(username, forKey: "username")
+            UserDefaults.standard.hasOnboarded = true
+            self.view?.pushMainTabBarViewController()
+        }
+        else {
+            self.view?.showAlert(title: "error", message: "error")
+        }
     }
 }
 
@@ -31,10 +39,10 @@ final class OnboardingViewModel {
 extension OnboardingViewModel: OnboardingViewModelInterface {
 
     func notifyViewDidload() {
-        view?.uiInit()
+        view?.setupUI()
     }
 
-    func validationTextFields(textUserName: String) -> Bool {
+    func isTextFieldValid(textUserName: String) -> Bool {
         if textUserName.isEmpty {
             view?.showAlert(title: ConstantsOnboardingVC.messageWarning, message: ConstantsOnboardingVC.messageTransactionUserNameCantEmpty)
             return false

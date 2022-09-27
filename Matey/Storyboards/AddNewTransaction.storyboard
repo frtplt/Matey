@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="89u-Hg-Dsg">
-                                <rect key="frame" x="57" y="169" width="300" height="44"/>
+                                <rect key="frame" x="57" y="173" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aBt-8N-d0a"/>
                                     <constraint firstAttribute="width" constant="300" id="uxf-61-lXH"/>
@@ -26,7 +27,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EsZ-bA-Lxp">
-                                <rect key="frame" x="57" y="289" width="300" height="44"/>
+                                <rect key="frame" x="57" y="293" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="QB1-0v-eWs"/>
                                 </constraints>
@@ -34,7 +35,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LPK-cl-D3g">
-                                <rect key="frame" x="57" y="349" width="300" height="44"/>
+                                <rect key="frame" x="57" y="353" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aAU-Kd-gSE"/>
                                 </constraints>
@@ -42,7 +43,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o4H-6C-6M3">
-                                <rect key="frame" x="57" y="409" width="300" height="44"/>
+                                <rect key="frame" x="57" y="413" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JKH-2f-5fx"/>
                                 </constraints>
@@ -50,7 +51,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgI-p1-bAV">
-                                <rect key="frame" x="147" y="485" width="120" height="52"/>
+                                <rect key="frame" x="147" y="489" width="120" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="7yT-G8-SQp"/>
                                     <constraint firstAttribute="width" constant="120" id="ukK-IP-Ojx"/>
@@ -58,11 +59,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="saveTransactionButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l7b-De-jZl"/>
+                                    <action selector="saveTransactionAction" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2OX-8W-z0r"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rA2-Pl-131">
-                                <rect key="frame" x="57" y="229" width="300" height="44"/>
+                                <rect key="frame" x="57" y="233" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1qz-fv-cRb"/>
                                 </constraints>
@@ -93,7 +94,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="839-QM-12c"/>
                     <connections>
-                        <outlet property="buttonSaveNewTransaction" destination="HgI-p1-bAV" id="nR6-ko-hYW"/>
+                        <outlet property="buttonSaveNewTransaction" destination="HgI-p1-bAV" id="Fab-oX-9tq"/>
                         <outlet property="textFieldBorrowAmount" destination="o4H-6C-6M3" id="Zfd-du-PnW"/>
                         <outlet property="textFieldFriendUsername" destination="EsZ-bA-Lxp" id="VSX-Y5-99F"/>
                         <outlet property="textFieldLendAmount" destination="LPK-cl-D3g" id="vYW-Xa-8Ma"/>

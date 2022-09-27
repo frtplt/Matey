@@ -6,14 +6,16 @@
 //
 
 import XCTest
+@testable import Matey
 
 final class AddNewTransactionViewModelUnitTests: XCTestCase {
 
-    private var sut: MockAddNewTransactionViewModel?
+    private var sut: AddNewTransactionViewModel?
+    private var view = MockAddNewTransactionViewController()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = MockAddNewTransactionViewModel()
+        sut = AddNewTransactionViewModel(view: view)
     }
 
     override func tearDownWithError() throws {
@@ -22,20 +24,22 @@ final class AddNewTransactionViewModelUnitTests: XCTestCase {
     }
 
     func testSaveTransaction() {
-        sut?.saveTransaction(name: "Fırat", friend: "Ulaş", lend: 1000, borrow: 2000, username: "frtplt", id: UUID())
+        sut?.saveTransaction(name: "Fırat", friend: "firat", lend: 1000, borrow: 2000, username: ConstantsUserDefault.currentUsername)
 
-        XCTAssertEqual(sut?.invokedSaveTransaction, true)
+        XCTAssertEqual(sut?.invokedSaveTransaction, true) // Ask for invokedTransaction
     }
 
     func testNotifyViewDidload() {
-        sut?.notifyViewDidload()
-
-        XCTAssertEqual(sut?.invokedNotifyViewDidload, true)
+        XCTAssertFalse(view.invokedSetupUI)
+        sut?.notifyViewWillAppear()
+        XCTAssertTrue(view.invokedSetupUI)
     }
 
-    func testValidationTextFields() {
-        sut?.validationTextFields(textRegistrantsName: "Test", textFieldRegistrantsUsername: "Test", textFieldFriendUsername: "Test")
+    func testisValidTextFields() {
+        let isNotValid = sut?.isValidTextFields(textRegistrantsName: "Test", textFieldRegistrantsUsername: "", textFieldFriendUsername: "Test")
+        XCTAssertEqual(isNotValid, false)
 
-        XCTAssertEqual(sut?.invokedValidationTextFields, true)
+        let isValid = sut?.isValidTextFields(textRegistrantsName: "Test", textFieldRegistrantsUsername: "Test", textFieldFriendUsername: "Test")
+        XCTAssertEqual(isValid, true)
     }
 }

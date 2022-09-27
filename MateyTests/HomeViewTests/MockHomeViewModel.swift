@@ -5,7 +5,10 @@
 //  Created by Firat Polat on 13.09.2022.
 //
 
+import Foundation
 @testable import Matey
+
+// TODO: Test ediceğimiz reel diğerleri mock
 
 final class MockHomeViewModel: HomeViewModelInterface {
 
@@ -39,45 +42,73 @@ final class MockHomeViewModel: HomeViewModelInterface {
         return stubbedTotalLend
     }
 
-    var invokedNotifyViewDidload = false
-    var invokedNotifyViewDidloadCount = 0
+    var invokedNotifyViewWillAppear = false
+    var invokedNotifyViewWillAppearCount = 0
 
-    func notifyViewDidload() {
-        invokedNotifyViewDidload = true
-        invokedNotifyViewDidloadCount += 1
+    func notifyViewWillAppear() {
+        invokedNotifyViewWillAppear = true
+        invokedNotifyViewWillAppearCount += 1
     }
 
-    var invokedCurrentUserDataUsername = false
-    var invokedCurrentUserDataUsernameCount = 0
-    var invokedCurrentUserDataUsernameParameters: (username: String, Void)?
-    var invokedCurrentUserDataUsernameParametersList = [(username: String, Void)]()
-    var stubbedCurrentUserDataUsernameResult: [Person]!
+    var invokedDeleteTransaction = false
+    var invokedDeleteTransactionCount = 0
+    var invokedDeleteTransactionParameters: (id: UUID, indexpath: Int)?
+    var invokedDeleteTransactionParametersList = [(id: UUID, indexpath: Int)]()
 
-    func currentUserData(username: String) -> [Person]? {
-        invokedCurrentUserDataUsername = true
-        invokedCurrentUserDataUsernameCount += 1
-        invokedCurrentUserDataUsernameParameters = (username, ())
-        invokedCurrentUserDataUsernameParametersList.append((username, ()))
-        return stubbedCurrentUserDataUsernameResult
+    func deleteTransaction(id: UUID, indexpath: Int) {
+        invokedDeleteTransaction = true
+        invokedDeleteTransactionCount += 1
+        invokedDeleteTransactionParameters = (id, indexpath)
+        invokedDeleteTransactionParametersList.append((id, indexpath))
     }
 
-    var invokedTotalBorrowCount = false
-    var invokedTotalBorrowCountCount = 0
-    var stubbedTotalBorrowCountResult: Double! = 0
+    var invokedBorrowLabelAmount = false
+    var invokedBorrowLabelAmountCount = 0
+    var stubbedBorrowLabelAmountResult: String! = ""
 
-    func totalBorrowCount() -> Double {
-        invokedTotalBorrowCount = true
-        invokedTotalBorrowCountCount += 1
-        return stubbedTotalBorrowCountResult
+    func borrowLabelAmount() -> String {
+        invokedBorrowLabelAmount = true
+        invokedBorrowLabelAmountCount += 1
+        return stubbedBorrowLabelAmountResult
     }
 
-    var invokedTotalLendCount = false
-    var invokedTotalLendCountCount = 0
-    var stubbedTotalLendCountResult: Double! = 0
+    var invokedLendLabelAmount = false
+    var invokedLendLabelAmountCount = 0
+    var stubbedLendLabelAmountResult: String! = ""
 
-    func totalLendCount() -> Double {
-        invokedTotalLendCount = true
-        invokedTotalLendCountCount += 1
-        return stubbedTotalLendCountResult
+    func lendLabelAmount() -> String {
+        invokedLendLabelAmount = true
+        invokedLendLabelAmountCount += 1
+        return stubbedLendLabelAmountResult
+    }
+
+    var invokedTotalBalanceLabelAmount = false
+    var invokedTotalBalanceLabelAmountCount = 0
+    var stubbedTotalBalanceLabelAmountResult: String! = ""
+
+    func totalBalanceLabelAmount() -> String {
+        invokedTotalBalanceLabelAmount = true
+        invokedTotalBalanceLabelAmountCount += 1
+        return stubbedTotalBalanceLabelAmountResult
+    }
+
+    var invokedNumberOfSections = false
+    var invokedNumberOfSectionsCount = 0
+    var stubbedNumberOfSectionsResult: Int! = 0
+
+    func numberOfSections() -> Int {
+        invokedNumberOfSections = true
+        invokedNumberOfSectionsCount += 1
+        return stubbedNumberOfSectionsResult
+    }
+
+    var invokedNumberOfRows = false
+    var invokedNumberOfRowsCount = 0
+    var stubbedNumberOfRowsResult: Int! = 0
+
+    func numberOfRows() -> Int {
+        invokedNumberOfRows = true
+        invokedNumberOfRowsCount += 1
+        return stubbedNumberOfRowsResult
     }
 }

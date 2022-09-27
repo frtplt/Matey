@@ -9,14 +9,6 @@
 
 final class MockAddNewTransactionViewController: AddNewTransactionViewControllerInterface {
 
-    var invokedUiInit = false
-    var invokedUiInitCount = 0
-
-    func uiInit() {
-        invokedUiInit = true
-        invokedUiInitCount += 1
-    }
-
     var invokedShowAlert = false
     var invokedShowAlertCount = 0
     var invokedShowAlertParameters: (title: String, message: String)?
@@ -29,11 +21,11 @@ final class MockAddNewTransactionViewController: AddNewTransactionViewController
         invokedShowAlertParametersList.append((title, message))
     }
 
-    var invokedSaveTransaction = false
-    var invokedSaveTransactionCount = 0
+    var invokedSetupUI = false
+    var invokedSetupUICount = 0
 
-    func saveTransaction() {
-        invokedSaveTransaction = true
-        invokedSaveTransactionCount += 1
+    func setupUI() {
+        invokedSetupUI = true
+        invokedSetupUICount += 1
     }
 }

@@ -9,29 +9,11 @@
 
 final class MockHomeViewController: HomeViewControllerInterface {
 
-    var invokedCoreDataManagerGetter = false
-    var invokedCoreDataManagerGetterCount = 0
-    var stubbedCoreDataManager: CoreDataManager!
+    var invokedSetupUI = false
+    var invokedSetupUICount = 0
 
-    var coreDataManager: CoreDataManager {
-        invokedCoreDataManagerGetter = true
-        invokedCoreDataManagerGetterCount += 1
-        return stubbedCoreDataManager
-    }
-
-    var invokedUiInit = false
-    var invokedUiInitCount = 0
-
-    func uiInit() {
-        invokedUiInit = true
-        invokedUiInitCount += 1
-    }
-
-    var invokedSetupPlusButton = false
-    var invokedSetupPlusButtonCount = 0
-
-    func setupPlusButton() {
-        invokedSetupPlusButton = true
-        invokedSetupPlusButtonCount += 1
+    func setupUI() {
+        invokedSetupUI = true
+        invokedSetupUICount += 1
     }
 }

@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol OnboardingViewControllerInterface: AnyObject {
-    func uiInit()
+protocol OnboardingViewControllerInterface: BaseViewControllerInterface {
     func showAlert(title: String, message: String)
     func saveUsername()
+    func pushMainTabBarViewController()
 }
 
 final class OnboardingViewController: UIViewController {
@@ -26,56 +26,56 @@ final class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         viewModel = OnboardingViewModel(view: self)
         viewModel?.notifyViewDidload()
     }
 
-    @IBAction func getStartedButtonAction(_ sender: UIButton) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    @IBAction func getStartedButtonAction() {
         saveUsername()
-        UserDefaults.standard.hasOnboarded = true
     }
 }
 
 // MARK: - Interface Setup
 
 extension OnboardingViewController: OnboardingViewControllerInterface {
+    //TODO: Show alert extension oluştur
+    func showAlert(title: String, message: String) {
+        self.showAlertExt(title: title, message: message)
+    }
 
-    func uiInit() {
+    func pushMainTabBarViewController() {
+        let storyboard = UIStoryboard(name: ConstantsMainTabBarVC.storyboardName, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: ConstantsMainTabBarVC.storyboardIdentifier) as! MainTabBarViewController
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true)
+    }
+
+    func saveUsername() {
+        guard let textUserName = textfieldUsername.text else { return }
+
+        viewModel?.saveUsername(username: textUserName)
+        }
+    }
+
+extension OnboardingViewController: BaseViewControllerInterface {
+    func setupUI() {
+
         view.backgroundColor = ConstantsOnboardingVC.onboardingBackgroundColor
+
         imageView.image = UIImage(named: ConstantsOnboardingVC.onboardingImageName)
+
         labelDescription.text = ConstantsOnboardingVC.labelDescriptionText
         labelUsernameTitle.text = ConstantsOnboardingVC.labelUsernameTitleText
+
         textfieldUsername.placeholder = ConstantsOnboardingVC.textFieldUsernamePlaceHolderText
+
         buttonGetStarted.setTitle(ConstantsOnboardingVC.buttonGetStartedTitleText, for: .normal)
         buttonGetStarted.setTitleColor(ConstantsOnboardingVC.buttonGetStartedColor, for: .normal)
         buttonGetStarted.layer.cornerRadius = ConstantsOnboardingVC.buttonGetStartedCornerRadius
         buttonGetStarted.backgroundColor = .black
-    }
-
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let doneAction = UIAlertAction(title: ConstantsAddNewTransactionVC.messageDone, style: UIAlertAction.Style.default) { (action) in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
-            viewController.modalPresentationStyle = .fullScreen
-            self.present(viewController, animated: true)
-        }
-
-        alertController.addAction(doneAction)
-        alertController.view.tintColor = UIColor.black
-        self.present(alertController, animated: true, completion: nil)
-    }
-
-    func saveUsername() {
-        let textUserName = textfieldUsername.text ?? ""
-
-        if viewModel?.validationTextFields(textUserName: textUserName) == true {
-            viewModel?.saveUsername(username: textUserName)
-            showAlert(title: ConstantsOnboardingVC.messageUsernameSaved, message: ConstantsOnboardingVC.messageUsernameSuccessfully)
-        }
-        else {
-            viewModel?.validationTextFields(textUserName: textUserName)
-        }
     }
 }

@@ -8,11 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HomeViewControllerInterface: AnyObject {
-    var coreDataManager: CoreDataManager { get }
-    func uiInit()
-    func setupPlusButton()
-}
+protocol HomeViewControllerInterface: BaseViewControllerInterface {}
 
 final class HomeViewController: UIViewController {
 
@@ -30,143 +26,49 @@ final class HomeViewController: UIViewController {
     private var plusButton: UIButton!
 
     // MARK: - Properties
-
-    var coreDataManager = CoreDataManager()
     var viewModel: HomeViewModelInterface?
-    var currentUsername = UserDefaults.standard.value(forKey: "username") as? String
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel = HomeViewModel(view: self)
-        viewModel?.currentUserData(username: currentUsername ?? "") // will be updated after doing the onboarding screen
-        viewModel?.notifyViewDidload()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.collectionViewLayout = createLayout()
     }
 
+    //TODO: viewwillappear viewmodel tek func hallet
     override func viewWillAppear(_ animated: Bool) {
-        viewModel?.currentUserData(username: currentUsername ?? "") // will be updated after doing the onboarding screen
-        viewModel?.totalBorrowCount()
-        viewModel?.totalLendCount()
-        viewModel?.notifyViewDidload()
-        collectionView.reloadData()
+        viewModel = HomeViewModel(view: self)
+        viewModel?.notifyViewWillAppear()
     }
-
     // MARK: - Collectionview layout setup
 
     private func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
-            guard let self = self else { return nil }
+        UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
 
-            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(218), heightDimension: .absolute(318)), subitems: [item])
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(CGFloat(ConstantsHomeVC.collectionViewItemFractionalWidth)), heightDimension: .fractionalHeight(CGFloat(ConstantsHomeVC.collectionViewItemFractionalHeight))))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(CGFloat(ConstantsHomeVC.collectionViewGroupWidthDimension)), heightDimension: .absolute(CGFloat(ConstantsHomeVC.collectionViewGroupHeightDimension))), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = 10
-            section.contentInsets = .init(top: 0, leading: 10, bottom: 30, trailing: 10)
+            section.interGroupSpacing = CGFloat(ConstantsHomeVC.interGroupSpacing)
+            section.contentInsets = .init(top: CGFloat(ConstantsHomeVC.contentInsetsTop), leading: CGFloat(ConstantsHomeVC.contentInsetsLeading), bottom: CGFloat(ConstantsHomeVC.contentInsetsBottom), trailing: CGFloat(ConstantsHomeVC.contentInsetsTrailing))
 
             return section
         }
     }
-}
 
-// MARK: - Collectionview setup
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.currentUserData?.count ?? 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstantsHomeVC.homeCellIdentifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
-
-        let person = viewModel?.currentUserData?[indexPath.item] ?? Person()
-
-        cell.configure(person: person)
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let person = viewModel?.currentUserData?[indexPath.item]
-
-        let alertController = UIAlertController(title: ConstantsHomeVC.homeDeleteAlertMessage, message: nil, preferredStyle: .alert)
-
-        alertController.addAction(UIAlertAction.init(title: "yes", style: .default, handler: { _ in
-            self.collectionView.deleteItems(at: [indexPath])
-            self.coreDataManager.delete(id: (person?.id)!)
-            self.viewModel?.currentUserData(username: self.currentUsername ?? "") // will be updated after doing the onboarding screen
-            collectionView.reloadData()
-        }))
-
-        let disableAction = UIAlertAction(title: "no", style: .default, handler: { _ in })
-
-        alertController.addAction(disableAction)
-        alertController.view.tintColor = .black
-        alertController.preferredAction = disableAction
-        self.present(alertController, animated: true, completion: nil)
-    }
-}
-
-// MARK: - Interface Setup
-
-extension HomeViewController: HomeViewControllerInterface {
-
-    func uiInit() {
-        title = ConstantsHomeVC.title
-        labelName.text = currentUsername
-        labelName.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelNameFontSize)
-
-        labelWelcome.text = ConstantsHomeVC.labelWelcomeText
-        labelWelcome.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelWelcomeFontSize)
-        labelWelcome.textColor = .secondaryLabel
-
-        labelTotalBalance.text = ConstantsHomeVC.labelTotalBalanceText
-        labelTotalBalance.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelTotalBalanceFontSize)
-        labelTotalBalance.textColor = .secondaryLabel
-        labelTotalBalanceAmount.text = "\(Double(Int(viewModel?.totalLend ?? 0.0) - Int(viewModel?.totalBorrow ?? 0.0))) ₺"
-        labelTotalBalanceAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelTotalBalanceAmountFont)
-
-        labelLend.text = ConstantsHomeVC.labelLendText
-        labelLend.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelLendFontSize)
-        labelLend.textColor = .secondaryLabel
-        labelLendAmount.text = "\(viewModel?.totalLend ?? 0.0) ₺"
-        labelLendAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelLendAmountFontSize)
-        labelLendAmount.textColor = ConstantsHomeVC.labelLendAmountTextColor
-
-        labelBorrow.text = ConstantsHomeVC.labelBorrowText
-        labelBorrow.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelBorrowFontSize)
-        labelBorrow.textColor = .secondaryLabel
-        labelBorrowAmount.text = "\(viewModel?.totalBorrow ?? 0.0) ₺"
-        labelBorrowAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelBorrowAmountFontSize)
-        labelBorrowAmount.textColor = ConstantsHomeVC.labelBorrowAmountTextColor
-
-        labelHeader.text = ConstantsHomeVC.labelHeaderText
-        labelHeader.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelHeaderFontSize)
-        labelHeader.textColor = ConstantsHomeVC.labelHeaderTextColor
-    }
-
-    func setupPlusButton() {
-        plusButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+    private func setupPlusButton() {
+        plusButton = UIButton(frame: ConstantsHomeVC.plusButtonFrame)
         var menuButtonFrame = plusButton.frame
         menuButtonFrame.origin.y = view.bounds.height - (view.bounds.height / 5)
-        menuButtonFrame.origin.x = view.bounds.width/10 * 8
+        menuButtonFrame.origin.x = view.bounds.width / 10 * 8
         plusButton.frame = menuButtonFrame
 
-        plusButton.backgroundColor = UIColor(displayP3Red: 47/255, green: 140/255, blue: 79/255, alpha: 1.0)
-        plusButton.layer.cornerRadius = menuButtonFrame.height/2
+        plusButton.backgroundColor = ConstantsHomeVC.plusButtonBackgroundColor
+        plusButton.layer.cornerRadius = menuButtonFrame.height / 2
         view.addSubview(plusButton)
 
-        plusButton.setImage(UIImage(named: "plus"), for: .normal)
+        plusButton.setImage(UIImage(named: ConstantsHomeVC.plusButtonName), for: .normal)
         plusButton.imageView?.contentMode = .scaleToFill
-        plusButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        plusButton.imageEdgeInsets = ConstantsHomeVC.imageEdgeInsets
         plusButton.addTarget(self, action: #selector(plusButtonAction), for: .touchUpInside)
 
         view.layoutIfNeeded()
@@ -176,7 +78,94 @@ extension HomeViewController: HomeViewControllerInterface {
     // MARK: - Actions
 
     @objc private func plusButtonAction() {
-        guard let viewController = UIStoryboard(name: "AddNewTransaction", bundle: Bundle.main).instantiateInitialViewController(ofType: AddNewTransactionViewController?.self) else { return }
+        guard let viewController = UIStoryboard(name: ConstantsAddNewTransactionVC.storyboardName, bundle: Bundle.main).instantiateInitialViewController(ofType: AddNewTransactionViewController?.self) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - Collectionview setup
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard let sections = viewModel?.numberOfSections() else { return 0 }
+        return sections
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let rows = viewModel?.numberOfRows() else { return 0 }
+        return rows
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstantsHomeVC.homeCellIdentifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
+
+        if (viewModel?.currentUserData?.count)! > 0 {
+            guard let person = viewModel?.currentUserData?[indexPath.item] else { return UICollectionViewCell() }
+
+            cell.configure(person: person)
+            return cell
+        }
+        else {
+            return cell
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = viewModel?.currentUserData?[indexPath.item]
+
+        self.showAlertExt(title: ConstantsHomeVC.homeDeleteAlertMessage, message: nil) {
+
+//            self.collectionView.deleteItems(at: [indexPath])
+            guard let id = person?.id else { return }
+            self.viewModel?.deleteTransaction(id: id, indexpath: indexPath.row)
+            collectionView.reloadData()
+        }
+    }
+}
+
+// MARK: - Interface Setup
+
+extension HomeViewController: HomeViewControllerInterface {
+
+    func setupUI() {
+
+        setupPlusButton()
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.collectionViewLayout = createLayout()
+
+        title = ConstantsHomeVC.title
+        labelName.text = ConstantsUserDefault.currentUsername
+        labelName.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelNameFontSize)
+
+        labelWelcome.text = ConstantsHomeVC.labelWelcomeText
+        labelWelcome.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelWelcomeFontSize)
+        labelWelcome.textColor = .secondaryLabel
+
+        labelTotalBalance.text = ConstantsHomeVC.labelTotalBalanceText
+        labelTotalBalance.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelTotalBalanceFontSize)
+        labelTotalBalance.textColor = .secondaryLabel
+        labelTotalBalanceAmount.text = viewModel?.totalBalanceLabelAmount()
+        labelTotalBalanceAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelTotalBalanceAmountFont)
+
+        labelLend.text = ConstantsHomeVC.labelLendText
+        labelLend.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelLendFontSize)
+        labelLend.textColor = .secondaryLabel
+        labelLendAmount.text = viewModel?.lendLabelAmount()
+        labelLendAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelLendAmountFontSize)
+        labelLendAmount.textColor = ConstantsHomeVC.labelLendAmountTextColor
+
+        labelBorrow.text = ConstantsHomeVC.labelBorrowText
+        labelBorrow.font = UIFont.systemFont(ofSize: ConstantsHomeVC.labelBorrowFontSize)
+        labelBorrow.textColor = .secondaryLabel
+        labelBorrowAmount.text = viewModel?.borrowLabelAmount()
+        labelBorrowAmount.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelBorrowAmountFontSize)
+        labelBorrowAmount.textColor = ConstantsHomeVC.labelBorrowAmountTextColor
+
+        labelHeader.text = ConstantsHomeVC.labelHeaderText
+        labelHeader.font = UIFont.boldSystemFont(ofSize: ConstantsHomeVC.labelHeaderFontSize)
+        labelHeader.textColor = ConstantsHomeVC.labelHeaderTextColor
     }
 }

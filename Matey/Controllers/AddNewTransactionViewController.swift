@@ -7,10 +7,8 @@
 
 import UIKit
 
-protocol AddNewTransactionViewControllerInterface: AnyObject {
-    func uiInit()
+protocol AddNewTransactionViewControllerInterface: BaseViewControllerInterface {
     func showAlert(title: String, message: String)
-    func saveTransaction()
 }
 
 final class AddNewTransactionViewController: UIViewController {
@@ -22,22 +20,23 @@ final class AddNewTransactionViewController: UIViewController {
     @IBOutlet weak private var textFieldBorrowAmount: UITextField!
     @IBOutlet weak private var buttonSaveNewTransaction: UIButton!
 
-    var viewModel: AddNewTransactionViewModelInterface?
+    private var viewModel: AddNewTransactionViewModelInterface?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewModel = AddNewTransactionViewModel(view: self)
-        viewModel?.notifyViewDidload()
+        viewModel?.notifyViewWillAppear()
     }
 
     // MARK: - When user pressed the save button
 
-    @IBAction func saveTransactionButtonAction(_ sender: UIButton) {
+    @IBAction func saveTransactionAction() {
         saveTransaction()
     }
 
     // MARK: - Setup textfields empty func
+
     private func setupTextFieldEmpty() {
         textFieldRegistrantsName.text = ""
         textFieldRegistrantsUsername.text = ""
@@ -51,7 +50,7 @@ final class AddNewTransactionViewController: UIViewController {
 
 extension AddNewTransactionViewController: AddNewTransactionViewControllerInterface {
 
-    func uiInit() {
+    func setupUI() {
         title = ConstantsAddNewTransactionVC.title
         navigationController?.navigationBar.tintColor = ConstantsAddNewTransactionVC.navigationBarTintColor
 
@@ -84,26 +83,19 @@ extension AddNewTransactionViewController: AddNewTransactionViewControllerInterf
     }
 
     func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let doneAction = UIAlertAction(title: ConstantsAddNewTransactionVC.messageDone, style: UIAlertAction.Style.default) { (action) in }
-
-        alertController.addAction(doneAction)
-        alertController.view.tintColor = UIColor.black
-        self.present(alertController, animated: true, completion: nil)
+        self.showAlertExt(title: title, message: message)
     }
 
     func saveTransaction() {
-        let textRegistrantsName = textFieldRegistrantsName.text ?? ""
-        let textFieldRegistrantsUsername = textFieldRegistrantsUsername.text ?? ""
-        let textFieldFriendUsername = textFieldFriendUsername.text ?? ""
+        //TODO: Make clear
+        guard let textRegistrantsName = textFieldRegistrantsName.text, let textFieldRegistrantsUsername = textFieldRegistrantsUsername.text, let textFieldFriendUsername = textFieldFriendUsername.text, let textFieldLendAmount = Double(textFieldLendAmount.text ?? "0"), let textFieldBorrowAmount = Double(textFieldBorrowAmount.text ?? "0") else { return self.showAlert(title: ConstantsAddNewTransactionVC.messageCouldntSave, message: ConstantsAddNewTransactionVC.messageFillLines)}
 
-        if viewModel?.validationTextFields(textRegistrantsName: textRegistrantsName, textFieldRegistrantsUsername: textFieldRegistrantsUsername, textFieldFriendUsername: textFieldFriendUsername) == true {
-            viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: Double(textFieldLendAmount.text ?? "0.0") ?? 0.0, borrow: Double(textFieldBorrowAmount.text ?? "0.0") ?? 0.0, username: textFieldRegistrantsUsername, id: UUID())
-            showAlert(title: ConstantsAddNewTransactionVC.messageTransactionSaved, message: ConstantsAddNewTransactionVC.messageTransactionSuccessfully)
-            setupTextFieldEmpty()
-        }
-        else {
-            viewModel?.validationTextFields(textRegistrantsName: textRegistrantsName, textFieldRegistrantsUsername: textFieldRegistrantsUsername, textFieldFriendUsername: textFieldFriendUsername)
-        }
+        viewModel?.textRegistrantsName = textRegistrantsName
+        viewModel?.textFieldRegistrantsUsername = textFieldRegistrantsUsername
+        viewModel?.textFieldFriendUsername = textFieldFriendUsername
+        viewModel?.textFieldBorrowAmount = textFieldBorrowAmount
+        viewModel?.textFieldLendAmount = textFieldLendAmount
+
+        viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: textFieldLendAmount, borrow: textFieldBorrowAmount, username: textFieldRegistrantsUsername)
     }
 }

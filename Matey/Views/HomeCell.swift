@@ -31,5 +31,7 @@ class HomeCell: UICollectionViewCell {
         backgroundColor = .systemGray5
         layer.cornerRadius = 8.0
         imageView.layer.cornerRadius = 16.0
+
+        layoutIfNeeded()
     }
 }
