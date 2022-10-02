@@ -11,7 +11,7 @@ import UIKit
 protocol OnboardingViewModelInterface: AnyObject {
     func notifyViewDidload()
     func isTextFieldValid(textUserName: String) -> Bool
-    func saveUsername(username: String)
+    func saveUsername(username: String?)
 }
 
 final class OnboardingViewModel {
@@ -22,14 +22,14 @@ final class OnboardingViewModel {
         self.view = view
     }
 
-    func saveUsername(username: String) {
-        if isTextFieldValid(textUserName: username) {
+    func saveUsername(username: String?) {
+        if isTextFieldValid(textUserName: username ?? "") {
             UserDefaults.standard.set(username, forKey: "username")
             UserDefaults.standard.hasOnboarded = true
-            self.view?.pushMainTabBarViewController()
+            view?.pushMainTabBarViewController()
         }
         else {
-            self.view?.showAlert(title: "error", message: "error")
+            view?.showAlert(title: "error", message: "error")
         }
     }
 }

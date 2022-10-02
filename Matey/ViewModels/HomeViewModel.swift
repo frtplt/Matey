@@ -11,12 +11,14 @@ protocol HomeViewModelInterface: BaseViewModelInterface {
     var currentUserData: [Person]? { get }
     var totalBorrow: Double { get }
     var totalLend: Double { get }
+    var numberOfRows: Int { get }
+    var numberOfSections: Int { get }
+    var currentUserDataCount: Int { get }
+    func getCurrentUserData(with index: Int) -> Person
     func deleteTransaction(id: UUID, indexpath: Int)
     func borrowLabelAmount() -> String
     func lendLabelAmount() -> String
     func totalBalanceLabelAmount() -> String
-    func numberOfSections() -> Int
-    func numberOfRows() -> Int
 }
 
 final class HomeViewModel {
@@ -39,7 +41,7 @@ final class HomeViewModel {
         }()
         totalBorrow = 0.0
 
-        for i in 0..<currentUserData!.count {
+        for i in 0..<(currentUserData?.count ?? 0) {
             totalBorrow += currentUserData?[i].borrow ?? 0.0
         }
         return totalBorrow
@@ -53,7 +55,7 @@ final class HomeViewModel {
         }()
         totalLend = 0.0
 
-        for i in 0..<currentUserData!.count {
+        for i in 0..<(currentUserData?.count ?? 0) {
             totalLend += currentUserData?[i].lend ?? 0.0
         }
         return totalLend
@@ -72,11 +74,19 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setupUI()
     }
 
-    func numberOfSections() -> Int {
+    func getCurrentUserData(with index: Int) -> Person {
+        currentUserData?[index] ?? Person()
+    }
+
+    var numberOfSections: Int {
         1
     }
 
-    func numberOfRows() -> Int {
+    var numberOfRows: Int {
+        currentUserData?.count ?? 0
+    }
+
+    var currentUserDataCount: Int {
         currentUserData?.count ?? 0
     }
 

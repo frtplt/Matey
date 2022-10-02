@@ -42,7 +42,6 @@ final class OnboardingViewController: UIViewController {
 // MARK: - Interface Setup
 
 extension OnboardingViewController: OnboardingViewControllerInterface {
-    //TODO: Show alert extension oluştur
     func showAlert(title: String, message: String) {
         self.showAlertExt(title: title, message: message)
     }
@@ -55,7 +54,7 @@ extension OnboardingViewController: OnboardingViewControllerInterface {
     }
 
     func saveUsername() {
-        guard let textUserName = textfieldUsername.text else { return }
+        let textUserName = textfieldUsername.text
 
         viewModel?.saveUsername(username: textUserName)
         }

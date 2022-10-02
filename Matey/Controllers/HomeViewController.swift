@@ -22,11 +22,11 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak private var labelBorrow: UILabel!
     @IBOutlet weak private var labelBorrowAmount: UILabel!
     @IBOutlet weak private var labelHeader: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak private var collectionView: UICollectionView!
     private var plusButton: UIButton!
 
     // MARK: - Properties
-    var viewModel: HomeViewModelInterface?
+    private lazy var viewModel: HomeViewModelInterface! = HomeViewModel(view: self)
 
     // MARK: - Life Cycle
 
@@ -34,9 +34,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    //TODO: viewwillappear viewmodel tek func hallet
     override func viewWillAppear(_ animated: Bool) {
-        viewModel = HomeViewModel(view: self)
         viewModel?.notifyViewWillAppear()
     }
     // MARK: - Collectionview layout setup
@@ -88,20 +86,18 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard let sections = viewModel?.numberOfSections() else { return 0 }
-        return sections
+        return viewModel.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let rows = viewModel?.numberOfRows() else { return 0 }
-        return rows
+        return viewModel.numberOfRows
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstantsHomeVC.homeCellIdentifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
 
-        if (viewModel?.currentUserData?.count)! > 0 {
-            guard let person = viewModel?.currentUserData?[indexPath.item] else { return UICollectionViewCell() }
+        if viewModel.currentUserDataCount > 0 {
+            guard let person = viewModel?.getCurrentUserData(with: indexPath.item) else { return UICollectionViewCell() }
 
             cell.configure(person: person)
             return cell
@@ -116,7 +112,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         self.showAlertExt(title: ConstantsHomeVC.homeDeleteAlertMessage, message: nil) {
 
-//            self.collectionView.deleteItems(at: [indexPath])
             guard let id = person?.id else { return }
             self.viewModel?.deleteTransaction(id: id, indexpath: indexPath.row)
             collectionView.reloadData()

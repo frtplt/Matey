@@ -23,7 +23,7 @@ class HomeViewModelUnitTests: XCTestCase {
         sut = nil
     }
 
-    func testNotifyViewDidload() {
+    func notifyViewWillAppear() {
         XCTAssertFalse(view.invokedSetupUI)
         sut?.notifyViewWillAppear()
         XCTAssertTrue(view.invokedSetupUI)

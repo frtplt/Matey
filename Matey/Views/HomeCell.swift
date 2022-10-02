@@ -7,12 +7,12 @@
 
 import UIKit
 
-class HomeCell: UICollectionViewCell {
+final class HomeCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var labelFriendName: UILabel!
-    @IBOutlet weak var labelLend: UILabel!
-    @IBOutlet weak var labelBorrow: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var labelFriendName: UILabel!
+    @IBOutlet private weak var labelLend: UILabel!
+    @IBOutlet private weak var labelBorrow: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

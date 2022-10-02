@@ -42,12 +42,48 @@ final class MockHomeViewModel: HomeViewModelInterface {
         return stubbedTotalLend
     }
 
-    var invokedNotifyViewWillAppear = false
-    var invokedNotifyViewWillAppearCount = 0
+    var invokedNumberOfRowsGetter = false
+    var invokedNumberOfRowsGetterCount = 0
+    var stubbedNumberOfRows: Int! = 0
 
-    func notifyViewWillAppear() {
-        invokedNotifyViewWillAppear = true
-        invokedNotifyViewWillAppearCount += 1
+    var numberOfRows: Int {
+        invokedNumberOfRowsGetter = true
+        invokedNumberOfRowsGetterCount += 1
+        return stubbedNumberOfRows
+    }
+
+    var invokedNumberOfSectionsGetter = false
+    var invokedNumberOfSectionsGetterCount = 0
+    var stubbedNumberOfSections: Int! = 0
+
+    var numberOfSections: Int {
+        invokedNumberOfSectionsGetter = true
+        invokedNumberOfSectionsGetterCount += 1
+        return stubbedNumberOfSections
+    }
+
+    var invokedCurrentUserDataCountGetter = false
+    var invokedCurrentUserDataCountGetterCount = 0
+    var stubbedCurrentUserDataCount: Int! = 0
+
+    var currentUserDataCount: Int {
+        invokedCurrentUserDataCountGetter = true
+        invokedCurrentUserDataCountGetterCount += 1
+        return stubbedCurrentUserDataCount
+    }
+
+    var invokedGetCurrentUserData = false
+    var invokedGetCurrentUserDataCount = 0
+    var invokedGetCurrentUserDataParameters: (index: Int, Void)?
+    var invokedGetCurrentUserDataParametersList = [(index: Int, Void)]()
+    var stubbedGetCurrentUserDataResult: Person!
+
+    func getCurrentUserData(with index: Int) -> Person {
+        invokedGetCurrentUserData = true
+        invokedGetCurrentUserDataCount += 1
+        invokedGetCurrentUserDataParameters = (index, ())
+        invokedGetCurrentUserDataParametersList.append((index, ()))
+        return stubbedGetCurrentUserDataResult
     }
 
     var invokedDeleteTransaction = false
@@ -92,23 +128,11 @@ final class MockHomeViewModel: HomeViewModelInterface {
         return stubbedTotalBalanceLabelAmountResult
     }
 
-    var invokedNumberOfSections = false
-    var invokedNumberOfSectionsCount = 0
-    var stubbedNumberOfSectionsResult: Int! = 0
+    var invokedNotifyViewWillAppear = false
+    var invokedNotifyViewWillAppearCount = 0
 
-    func numberOfSections() -> Int {
-        invokedNumberOfSections = true
-        invokedNumberOfSectionsCount += 1
-        return stubbedNumberOfSectionsResult
-    }
-
-    var invokedNumberOfRows = false
-    var invokedNumberOfRowsCount = 0
-    var stubbedNumberOfRowsResult: Int! = 0
-
-    func numberOfRows() -> Int {
-        invokedNumberOfRows = true
-        invokedNumberOfRowsCount += 1
-        return stubbedNumberOfRowsResult
+    func notifyViewWillAppear() {
+        invokedNotifyViewWillAppear = true
+        invokedNotifyViewWillAppearCount += 1
     }
 }

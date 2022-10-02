@@ -20,12 +20,11 @@ final class AddNewTransactionViewController: UIViewController {
     @IBOutlet weak private var textFieldBorrowAmount: UITextField!
     @IBOutlet weak private var buttonSaveNewTransaction: UIButton!
 
-    private var viewModel: AddNewTransactionViewModelInterface?
+    private lazy var viewModel: AddNewTransactionViewModelInterface! = AddNewTransactionViewModel(view: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel = AddNewTransactionViewModel(view: self)
+        
         viewModel?.notifyViewWillAppear()
     }
 
@@ -33,6 +32,7 @@ final class AddNewTransactionViewController: UIViewController {
 
     @IBAction func saveTransactionAction() {
         saveTransaction()
+        setupTextFieldEmpty()
     }
 
     // MARK: - Setup textfields empty func
@@ -87,7 +87,6 @@ extension AddNewTransactionViewController: AddNewTransactionViewControllerInterf
     }
 
     func saveTransaction() {
-        //TODO: Make clear
         guard let textRegistrantsName = textFieldRegistrantsName.text, let textFieldRegistrantsUsername = textFieldRegistrantsUsername.text, let textFieldFriendUsername = textFieldFriendUsername.text, let textFieldLendAmount = Double(textFieldLendAmount.text ?? "0"), let textFieldBorrowAmount = Double(textFieldBorrowAmount.text ?? "0") else { return self.showAlert(title: ConstantsAddNewTransactionVC.messageCouldntSave, message: ConstantsAddNewTransactionVC.messageFillLines)}
 
         viewModel?.textRegistrantsName = textRegistrantsName
