@@ -8,7 +8,16 @@
 
 import CoreData
 
-final class CoreDataManager {
+protocol CoreDataManagerInterface: AnyObject {
+    func saveContext()
+    func insertPerson(name: String, friend: String, lend: Double, borrow: Double, username: String, id: UUID) -> Person?
+    func update(name: String, friend: String, lend: String, borrow: String, username: String, id: UUID, person: Person)
+    func fetchCurrentPerson(username: String) -> [Person]?
+    func delete(id: UUID) -> [Person]?
+    func deleteAllRecords(entity : String)
+}
+
+final class CoreDataManager: CoreDataManagerInterface {
 
     static let shared = CoreDataManager()
 
@@ -25,7 +34,7 @@ final class CoreDataManager {
         return container
     }()
 
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -166,3 +175,4 @@ final class CoreDataManager {
             }
         }
 }
+

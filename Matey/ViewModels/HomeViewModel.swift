@@ -6,11 +6,10 @@
 //
 
 import Foundation
+import CoreGraphics
 
 protocol HomeViewModelInterface: BaseViewModelInterface {
     var currentUserData: [Person]? { get }
-    var totalBorrow: Double { get }
-    var totalLend: Double { get }
     var numberOfRows: Int { get }
     var numberOfSections: Int { get }
     var currentUserDataCount: Int { get }
@@ -24,21 +23,19 @@ protocol HomeViewModelInterface: BaseViewModelInterface {
 final class HomeViewModel {
 
     private weak var view: HomeViewControllerInterface?
-    var currentUserData: [Person]? = {
-        CoreDataManager.shared.fetchCurrentPerson(username: ConstantsUserDefault.currentUsername)
-    }()
-    var totalBorrow = 0.0
-    var totalLend = 0.0
+    private var coreDataManager: CoreDataManagerInterface?
 
-    init(view: HomeViewControllerInterface?) {
+    var currentUserData: [Person]?
+
+    private var totalBorrow = 0.0
+    private var totalLend = 0.0
+
+    init(view: HomeViewControllerInterface?, coreDataManager: CoreDataManagerInterface? = CoreDataManager.shared) {
         self.view = view
+        self.coreDataManager = coreDataManager
     }
 
-    func totalBorrowCount() -> Double {
-        // Ask for refresh currendatauser for unit test
-        var currentUserData: [Person]? = {
-            CoreDataManager.shared.fetchCurrentPerson(username: ConstantsUserDefault.currentUsername)
-        }()
+    private func totalBorrowCount() -> Double {
         totalBorrow = 0.0
 
         for i in 0..<(currentUserData?.count ?? 0) {
@@ -48,11 +45,7 @@ final class HomeViewModel {
         borrowLabelAmount()
     }
 
-    func totalLendCount() -> Double {
-        // Ask for refresh currendatauser for unit test
-        var currentUserData: [Person]? = {
-            CoreDataManager.shared.fetchCurrentPerson(username: ConstantsUserDefault.currentUsername)
-        }()
+    private func totalLendCount() -> Double {
         totalLend = 0.0
 
         for i in 0..<(currentUserData?.count ?? 0) {
@@ -61,6 +54,11 @@ final class HomeViewModel {
         return totalLend
         lendLabelAmount()
     }
+
+    private func fetchCurrentUserData(username: String) -> [Person]? {
+        currentUserData = coreDataManager?.fetchCurrentPerson(username: username)
+        return currentUserData
+    }
 }
 
 // MARK: - Interface Setup
@@ -68,6 +66,7 @@ final class HomeViewModel {
 extension HomeViewModel: HomeViewModelInterface {
 
     func notifyViewWillAppear() {
+        fetchCurrentUserData(username: ConstantsUserDefault.currentUsername)
         totalBorrowCount()
         totalLendCount()
         totalBalanceLabelAmount()
@@ -92,7 +91,7 @@ extension HomeViewModel: HomeViewModelInterface {
 
     func deleteTransaction(id: UUID, indexpath: Int) {
         currentUserData?.remove(at: indexpath)
-        CoreDataManager.shared.delete(id: id)
+        coreDataManager?.delete(id: id)
         notifyViewWillAppear()
     }
 

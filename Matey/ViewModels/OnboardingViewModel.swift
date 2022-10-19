@@ -10,7 +10,6 @@ import UIKit
 
 protocol OnboardingViewModelInterface: AnyObject {
     func notifyViewDidload()
-    func isTextFieldValid(textUserName: String) -> Bool
     func saveUsername(username: String?)
 }
 
@@ -22,15 +21,12 @@ final class OnboardingViewModel {
         self.view = view
     }
 
-    func saveUsername(username: String?) {
-        if isTextFieldValid(textUserName: username ?? "") {
-            UserDefaults.standard.set(username, forKey: "username")
-            UserDefaults.standard.hasOnboarded = true
-            view?.pushMainTabBarViewController()
+    private func isTextFieldValid(textUserName: String) -> Bool {
+        if textUserName.isEmpty {
+            view?.showAlert(title: ConstantsOnboardingVC.messageWarning, message: ConstantsOnboardingVC.messageTransactionUserNameCantEmpty)
+            return false
         }
-        else {
-            view?.showAlert(title: "error", message: "error")
-        }
+        return true
     }
 }
 
@@ -42,11 +38,14 @@ extension OnboardingViewModel: OnboardingViewModelInterface {
         view?.setupUI()
     }
 
-    func isTextFieldValid(textUserName: String) -> Bool {
-        if textUserName.isEmpty {
-            view?.showAlert(title: ConstantsOnboardingVC.messageWarning, message: ConstantsOnboardingVC.messageTransactionUserNameCantEmpty)
-            return false
+    func saveUsername(username: String?) {
+        if isTextFieldValid(textUserName: username ?? "") {
+            UserDefaults.standard.set(username, forKey: "username")
+            UserDefaults.standard.hasOnboarded = true
+            view?.pushMainTabBarViewController()
         }
-        return true
+        else {
+            view?.showAlert(title: "error", message: "error")
+        }
     }
 }

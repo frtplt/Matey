@@ -26,7 +26,7 @@ final class HomeViewController: UIViewController {
     private var plusButton: UIButton!
 
     // MARK: - Properties
-    private lazy var viewModel: HomeViewModelInterface! = HomeViewModel(view: self)
+    private var viewModel: HomeViewModelInterface!
 
     // MARK: - Life Cycle
 
@@ -35,7 +35,9 @@ final class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        viewModel = HomeViewModel(view: self)
         viewModel?.notifyViewWillAppear()
+        collectionView.reloadData()
     }
     // MARK: - Collectionview layout setup
 

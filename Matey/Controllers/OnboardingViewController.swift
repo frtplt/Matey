@@ -9,7 +9,6 @@ import UIKit
 
 protocol OnboardingViewControllerInterface: BaseViewControllerInterface {
     func showAlert(title: String, message: String)
-    func saveUsername()
     func pushMainTabBarViewController()
 }
 
@@ -21,7 +20,7 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet weak private var textfieldUsername: UITextField!
     @IBOutlet weak private var buttonGetStarted: UIButton!
 
-    var viewModel: OnboardingViewModelInterface?
+    private var viewModel: OnboardingViewModelInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,12 @@ final class OnboardingViewController: UIViewController {
 
     @IBAction func getStartedButtonAction() {
         saveUsername()
+    }
+
+    private func saveUsername() {
+        let textUserName = textfieldUsername.text
+
+        viewModel?.saveUsername(username: textUserName!)
     }
 }
 
@@ -52,13 +57,7 @@ extension OnboardingViewController: OnboardingViewControllerInterface {
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
     }
-
-    func saveUsername() {
-        let textUserName = textfieldUsername.text
-
-        viewModel?.saveUsername(username: textUserName)
-        }
-    }
+}
 
 extension OnboardingViewController: BaseViewControllerInterface {
     func setupUI() {

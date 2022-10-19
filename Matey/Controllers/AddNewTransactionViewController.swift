@@ -89,12 +89,6 @@ extension AddNewTransactionViewController: AddNewTransactionViewControllerInterf
     func saveTransaction() {
         guard let textRegistrantsName = textFieldRegistrantsName.text, let textFieldRegistrantsUsername = textFieldRegistrantsUsername.text, let textFieldFriendUsername = textFieldFriendUsername.text, let textFieldLendAmount = Double(textFieldLendAmount.text ?? "0"), let textFieldBorrowAmount = Double(textFieldBorrowAmount.text ?? "0") else { return self.showAlert(title: ConstantsAddNewTransactionVC.messageCouldntSave, message: ConstantsAddNewTransactionVC.messageFillLines)}
 
-        viewModel?.textRegistrantsName = textRegistrantsName
-        viewModel?.textFieldRegistrantsUsername = textFieldRegistrantsUsername
-        viewModel?.textFieldFriendUsername = textFieldFriendUsername
-        viewModel?.textFieldBorrowAmount = textFieldBorrowAmount
-        viewModel?.textFieldLendAmount = textFieldLendAmount
-
         viewModel?.saveTransaction(name: textRegistrantsName, friend: textFieldFriendUsername, lend: textFieldLendAmount, borrow: textFieldBorrowAmount, username: textFieldRegistrantsUsername)
     }
 }
