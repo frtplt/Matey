@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingViewController" id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="Matey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3vF-lh-9jB">
+                                <rect key="frame" x="147" y="226" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fys-4A-rEU"/>
+                                    <constraint firstAttribute="width" constant="120" id="n0P-fB-vXq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPj-sU-YuV">
+                                <rect key="frame" x="71" y="421" width="272" height="60.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="asF-qw-2GC"/>
+                                </constraints>
+                                <string key="text">Easily Follow Transactions 
+with Personal Profile</string>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wey-pt-3Vc">
+                                <rect key="frame" x="100" y="662.5" width="214" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO8-nn-Muz">
+                                <rect key="frame" x="151" y="720.5" width="112" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="dSW-tD-nLV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Get Started"/>
+                                <connections>
+                                    <action selector="getStartedButtonAction" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4hg-am-igD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRe-Ot-8BF">
+                                <rect key="frame" x="108.5" y="609.5" width="197" height="29"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.18431372549019609" green="0.5490196078431373" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="wey-pt-3Vc" firstAttribute="top" secondItem="aRe-Ot-8BF" secondAttribute="bottom" constant="24" id="0Dg-Lg-oOH"/>
+                            <constraint firstItem="hO8-nn-Muz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Jyv-Zp-M01"/>
+                            <constraint firstItem="LPj-sU-YuV" firstAttribute="top" secondItem="3vF-lh-9jB" secondAttribute="bottom" constant="75" id="MCa-Cd-yx9"/>
+                            <constraint firstItem="LPj-sU-YuV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="S7h-em-Tam"/>
+                            <constraint firstItem="aRe-Ot-8BF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Wak-Xg-Xm3"/>
+                            <constraint firstItem="wey-pt-3Vc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="a9H-rL-8G7"/>
+                            <constraint firstItem="aRe-Ot-8BF" firstAttribute="top" secondItem="LPj-sU-YuV" secondAttribute="bottom" constant="128" id="d3D-fw-HdV"/>
+                            <constraint firstItem="3vF-lh-9jB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="l5b-qP-qzp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wey-pt-3Vc" secondAttribute="trailing" constant="100" id="v2c-cI-sAu"/>
+                            <constraint firstItem="3vF-lh-9jB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="178" id="yKc-at-Ric"/>
+                            <constraint firstItem="hO8-nn-Muz" firstAttribute="top" secondItem="wey-pt-3Vc" secondAttribute="bottom" constant="24" id="yda-hx-Aiz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5jW-05-Ri3"/>
+                    <connections>
+                        <outlet property="buttonGetStarted" destination="hO8-nn-Muz" id="IF7-fU-UCZ"/>
+                        <outlet property="imageView" destination="3vF-lh-9jB" id="dNk-XP-kz4"/>
+                        <outlet property="labelDescription" destination="LPj-sU-YuV" id="l0b-Mt-aNG"/>
+                        <outlet property="labelUsernameTitle" destination="aRe-Ot-8BF" id="9IH-Ck-GBm"/>
+                        <outlet property="textfieldUsername" destination="wey-pt-3Vc" id="mHe-gQ-sQD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="50.892857142857139"/>
+        </scene>
+    </scenes>
+</document>
